@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oracle Forum – Cierre Contable 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#0a0a0a;--bg2:#111111;--card:#1a1a1a;--border:#2a2a2a;
+  --red:#d92b2b;--orange:#cc5500;--gold:#F9A825;--teal:#00FFE7;
+  --text:#e2e8f0;--muted:#64748b;--green:#22c55e;--yellow:#f59e0b;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:var(--bg2);}
+::-webkit-scrollbar-thumb{background:var(--red);border-radius:3px;}
+
+/* ══════════════════════════════
+   1. HEADER
+══════════════════════════════ */
+#header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(10,10,10,0.95);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  padding:0 32px;
+}
+.header-inner{
+  max-width:1200px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 0;gap:16px;flex-wrap:wrap;
+}
+.forum-logo{
+  font-family:'Orbitron',monospace;
+  font-size:clamp(14px,2vw,20px);
+  font-weight:900;color:#fff;
+  letter-spacing:2px;
+}
+.forum-logo span{color:var(--red);}
+.header-badges{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+.badge-status{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(217,43,43,0.12);border:1px solid rgba(217,43,43,0.4);
+  border-radius:20px;padding:5px 14px;
+  font-family:'Rajdhani';font-size:11px;font-weight:700;
+  letter-spacing:2px;color:var(--red);
+}
+.badge-modules{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);
+  border-radius:20px;padding:5px 14px;
+  font-family:'Rajdhani';font-size:11px;font-weight:700;
+  letter-spacing:2px;color:var(--green);
+}
+.badge-count{
+  background:rgba(249,168,37,0.1);border:1px solid rgba(249,168,37,0.3);
+  border-radius:20px;padding:5px 14px;
+  font-family:'Rajdhani';font-size:11px;font-weight:700;
+  letter-spacing:2px;color:var(--gold);
+}
+
+/* ══════════════════════════════
+   MAIN LAYOUT
+══════════════════════════════ */
+.main-wrap{max-width:1200px;margin:0 auto;padding:32px 24px;display:grid;grid-template-columns:1fr 300px;gap:28px;}
+@media(max-width:900px){.main-wrap{grid-template-columns:1fr;}}
+
+/* ══════════════════════════════
+   2. PERFIL + HILO PRINCIPAL
+══════════════════════════════ */
+.thread-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:16px;overflow:hidden;margin-bottom:20px;
+}
+.thread-header{
+  background:linear-gradient(135deg,rgba(217,43,43,0.12),rgba(204,85,0,0.06));
+  border-bottom:1px solid var(--border);
+  padding:24px 28px;display:flex;gap:18px;align-items:flex-start;
+}
+.avatar{
+  width:52px;height:52px;border-radius:50%;
+  object-fit:cover;border:2px solid var(--red);
+  box-shadow:0 0 16px rgba(217,43,43,0.4);
+  flex-shrink:0;
+}
+.avatar-sm{width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid var(--red);flex-shrink:0;}
+.avatar-xs{width:30px;height:30px;border-radius:50%;object-fit:cover;border:1px solid var(--border);flex-shrink:0;}
+.poster-info{}
+.poster-name{font-family:'Orbitron',monospace;font-size:14px;font-weight:700;color:#fff;margin-bottom:3px;}
+.poster-role{font-size:11px;color:var(--orange);letter-spacing:1px;font-family:'Rajdhani';font-weight:600;}
+.poster-date{font-size:10px;color:var(--muted);margin-top:4px;}
+.thread-body{padding:24px 28px;}
+.thread-title{
+  font-family:'Orbitron',monospace;font-size:clamp(16px,2.2vw,22px);
+  font-weight:900;color:#fff;margin-bottom:6px;
+  background:linear-gradient(135deg,#fff,var(--red));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.thread-subtitle{font-size:12px;color:var(--muted);letter-spacing:2px;font-family:'Rajdhani';margin-bottom:20px;}
+.divider{height:1px;background:linear-gradient(90deg,var(--red),transparent);margin:20px 0;}
+.body-text{font-size:13px;color:#94a3b8;line-height:1.75;}
+.body-text strong{color:#fff;}
+.body-text p{margin-bottom:12px;}
+
+/* PRESENTATION BUTTON */
+.btn-presentation{
+  display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,var(--red),var(--orange));
+  border:none;border-radius:30px;padding:12px 28px;
+  font-family:'Orbitron',monospace;font-size:11px;font-weight:700;
+  letter-spacing:2px;color:#fff;cursor:pointer;
+  box-shadow:0 0 30px rgba(217,43,43,0.4);
+  transition:all 0.3s;text-decoration:none;margin-top:16px;
+}
+.btn-presentation:hover{transform:translateY(-3px);box-shadow:0 0 50px rgba(217,43,43,0.6);}
+
+/* ══════════════════════════════
+   3. MÓDULOS ORACLE
+══════════════════════════════ */
+.modules-section{margin-top:8px;}
+.section-title{
+  font-family:'Orbitron',monospace;font-size:13px;font-weight:700;
+  color:var(--red);letter-spacing:3px;text-transform:uppercase;
+  margin-bottom:16px;display:flex;align-items:center;gap:10px;
+}
+.section-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--red),transparent);}
+
+.module-card{
+  background:rgba(26,26,26,0.8);border:1px solid var(--border);
+  border-radius:12px;padding:18px 20px;margin-bottom:12px;
+  transition:all 0.3s;
+}
+.module-card:hover{border-color:rgba(217,43,43,0.4);transform:translateX(4px);}
+.module-header{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.module-name{
+  font-family:'Orbitron',monospace;font-size:13px;font-weight:700;color:#fff;
+}
+.module-fullname{font-size:11px;color:var(--muted);font-family:'Rajdhani';letter-spacing:1px;}
+.status-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.status-green{background:var(--green);box-shadow:0 0 8px var(--green);}
+.status-yellow{background:var(--yellow);box-shadow:0 0 8px var(--yellow);}
+.status-red{background:#ef4444;box-shadow:0 0 8px #ef4444;}
+.status-label{font-size:10px;font-family:'Rajdhani';font-weight:700;letter-spacing:1px;}
+
+.asiento-box{
+  background:rgba(0,0,0,0.4);border:1px solid rgba(217,43,43,0.15);
+  border-radius:8px;padding:12px 16px;margin:10px 0;
+  font-family:'Courier New',monospace;font-size:11px;
+}
+.asiento-row{display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
+.asiento-row:last-child{border-bottom:none;}
+.asiento-cuenta{color:#94a3b8;}
+.asiento-db{color:var(--teal);font-weight:700;}
+.asiento-cr{color:var(--gold);font-weight:700;}
+
+.trace-flow{
+  display:flex;align-items:center;gap:8px;margin:10px 0;
+  font-family:'Rajdhani';font-size:10px;letter-spacing:1px;
+}
+.trace-step{background:rgba(217,43,43,0.1);border:1px solid rgba(217,43,43,0.3);border-radius:20px;padding:3px 10px;color:var(--red);}
+.trace-arrow{color:var(--muted);font-size:12px;}
+
+.obs-input{
+  width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);
+  border-radius:8px;padding:10px 14px;color:var(--text);font-family:'DM Sans';
+  font-size:12px;resize:none;margin-top:8px;transition:border-color 0.2s;
+  min-height:60px;
+}
+.obs-input:focus{outline:none;border-color:rgba(217,43,43,0.5);}
+.obs-input::placeholder{color:var(--muted);}
+.obs-label{font-size:10px;color:var(--muted);font-family:'Rajdhani';letter-spacing:1px;margin-top:8px;}
+
+/* ══════════════════════════════
+   4. RESPUESTAS ANIDADAS
+══════════════════════════════ */
+.replies-section{margin-top:8px;}
+.reply{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:12px;padding:18px 20px;margin-bottom:12px;
+}
+.reply-l2{
+  margin-left:2rem;background:rgba(20,20,20,0.8);
+  border:1px solid rgba(42,42,42,0.8);
+  border-radius:10px;padding:14px 18px;margin-bottom:10px;
+}
+.reply-l3{
+  margin-left:4rem;background:rgba(15,15,15,0.9);
+  border:1px solid rgba(42,42,42,0.6);
+  border-radius:8px;padding:12px 16px;margin-bottom:8px;
+}
+.reply-header{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.reply-meta{}
+.reply-name{font-size:13px;font-weight:700;color:#fff;}
+.reply-role{font-size:10px;color:var(--orange);font-family:'Rajdhani';letter-spacing:1px;}
+.reply-date{font-size:10px;color:var(--muted);}
+.reply-text{font-size:12px;color:#94a3b8;line-height:1.7;}
+.reply-text strong{color:#fff;}
+.reply-actions{display:flex;gap:10px;margin-top:12px;}
+.btn-reply{
+  background:none;border:1px solid var(--border);border-radius:20px;
+  padding:4px 14px;font-size:11px;color:var(--muted);cursor:pointer;
+  font-family:'Rajdhani';letter-spacing:1px;transition:all 0.2s;
+}
+.btn-reply:hover{border-color:var(--red);color:var(--red);}
+.btn-like{
+  background:none;border:1px solid var(--border);border-radius:20px;
+  padding:4px 14px;font-size:11px;color:var(--muted);cursor:pointer;
+  font-family:'Rajdhani';letter-spacing:1px;transition:all 0.2s;
+  display:flex;align-items:center;gap:5px;
+}
+.btn-like:hover{border-color:var(--gold);color:var(--gold);}
+
+/* ESPACIO EN CONSTRUCCIÓN */
+.construction-box{
+  background:rgba(204,85,0,0.06);border:1px dashed rgba(204,85,0,0.3);
+  border-radius:10px;padding:18px 20px;
+}
+.construction-header{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.construction-label{font-size:11px;color:var(--orange);font-family:'Rajdhani';letter-spacing:2px;font-weight:700;}
+.construction-hint{font-size:11px;color:var(--muted);line-height:1.6;}
+.construction-hint ul{margin:8px 0 0 16px;}
+.construction-hint li{margin-bottom:4px;}
+
+/* REPLY COMPOSER */
+.reply-composer{
+  background:rgba(26,26,26,0.6);border:1px solid var(--border);
+  border-radius:10px;padding:14px 18px;margin-top:12px;
+}
+.composer-label{font-size:10px;color:var(--muted);font-family:'Rajdhani';letter-spacing:2px;margin-bottom:8px;}
+.composer-input{
+  width:100%;background:rgba(0,0,0,0.4);border:1px solid var(--border);
+  border-radius:8px;padding:10px 14px;color:var(--text);
+  font-family:'DM Sans';font-size:12px;resize:none;min-height:80px;
+  transition:border-color 0.2s;
+}
+.composer-input:focus{outline:none;border-color:rgba(217,43,43,0.5);}
+.composer-input::placeholder{color:var(--muted);}
+.composer-actions{display:flex;justify-content:flex-end;margin-top:8px;}
+.btn-submit{
+  background:linear-gradient(135deg,var(--red),var(--orange));
+  border:none;border-radius:20px;padding:7px 20px;
+  font-family:'Rajdhani';font-size:11px;font-weight:700;
+  letter-spacing:2px;color:#fff;cursor:pointer;transition:all 0.2s;
+}
+.btn-submit:hover{transform:scale(1.05);box-shadow:0 0 20px rgba(217,43,43,0.4);}
+
+/* ══════════════════════════════
+   5. COMENTARIO CRUZADO
+══════════════════════════════ */
+.cross-comment{
+  background:linear-gradient(135deg,rgba(204,85,0,0.08),rgba(217,43,43,0.04));
+  border:1px solid rgba(204,85,0,0.3);border-radius:12px;
+  padding:20px 24px;margin-bottom:20px;
+}
+.cross-label{
+  font-family:'Orbitron',monospace;font-size:11px;font-weight:700;
+  color:var(--orange);letter-spacing:3px;margin-bottom:14px;
+  display:flex;align-items:center;gap:8px;
+}
+
+/* ══════════════════════════════
+   6. CHECKLIST CIERRE
+══════════════════════════════ */
+.checklist-table{width:100%;border-collapse:collapse;margin-top:10px;}
+.checklist-table th{
+  padding:10px 14px;text-align:left;
+  font-family:'Rajdhani';font-size:10px;font-weight:700;
+  letter-spacing:2px;color:var(--gold);
+  background:rgba(217,43,43,0.1);border-bottom:1px solid var(--border);
+}
+.checklist-table td{
+  padding:9px 14px;font-size:11px;color:#94a3b8;
+  border-bottom:1px solid rgba(42,42,42,0.6);vertical-align:middle;
+}
+.checklist-table tr:hover td{background:rgba(217,43,43,0.04);}
+.chk{width:16px;height:16px;accent-color:var(--red);cursor:pointer;}
+
+/* ══════════════════════════════
+   7. EVIDENCIAS
+══════════════════════════════ */
+.evidence-card{
+  background:rgba(26,26,26,0.6);border:1px dashed var(--border);
+  border-radius:10px;padding:16px 18px;margin-bottom:10px;
+}
+.evidence-name{font-size:12px;font-weight:700;color:#fff;margin-bottom:4px;}
+.evidence-role{font-size:10px;color:var(--orange);font-family:'Rajdhani';letter-spacing:1px;margin-bottom:10px;}
+.evidence-upload{
+  display:flex;align-items:center;gap:8px;
+  background:rgba(0,0,0,0.3);border:1px solid var(--border);
+  border-radius:8px;padding:8px 14px;cursor:pointer;
+  font-size:11px;color:var(--muted);transition:0.2s;margin-bottom:8px;
+}
+.evidence-upload:hover{border-color:var(--red);color:var(--red);}
+.evidence-comment{
+  width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);
+  border-radius:8px;padding:8px 12px;color:var(--text);
+  font-family:'DM Sans';font-size:11px;resize:none;min-height:50px;
+}
+.evidence-comment:focus{outline:none;border-color:rgba(217,43,43,0.4);}
+.evidence-deadline{font-size:10px;color:var(--muted);font-family:'Rajdhani';letter-spacing:1px;margin-top:6px;}
+
+/* ══════════════════════════════
+   SIDEBAR
+══════════════════════════════ */
+.sidebar{}
+.sidebar-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:12px;padding:18px 20px;margin-bottom:16px;
+}
+.sidebar-title{
+  font-family:'Orbitron',monospace;font-size:11px;font-weight:700;
+  color:var(--red);letter-spacing:2px;margin-bottom:14px;
+  padding-bottom:10px;border-bottom:1px solid var(--border);
+}
+.team-member{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.tm-info{}
+.tm-name{font-size:12px;font-weight:700;color:#fff;}
+.tm-role{font-size:10px;color:var(--orange);font-family:'Rajdhani';letter-spacing:1px;}
+.tm-status{margin-left:auto;}
+.dot-online{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);}
+.dot-pending{width:8px;height:8px;border-radius:50%;background:var(--yellow);box-shadow:0 0 6px var(--yellow);}
+
+/* STATS */
+.stat-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(42,42,42,0.5);}
+.stat-row:last-child{border-bottom:none;}
+.stat-label{font-size:11px;color:var(--muted);}
+.stat-val{font-family:'Orbitron',monospace;font-size:12px;font-weight:700;color:var(--red);}
+
+/* ══════════════════════════════
+   8. FOOTER
+══════════════════════════════ */
+#footer{
+  border-top:1px solid var(--border);
+  background:var(--bg2);padding:32px 24px;margin-top:40px;
+}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.timeline{display:flex;gap:0;margin-bottom:28px;flex-wrap:wrap;}
+.tl-item{flex:1;min-width:200px;position:relative;padding:0 20px 20px;}
+.tl-item::before{content:'';position:absolute;top:10px;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--red),rgba(217,43,43,0.2));}
+.tl-dot{width:20px;height:20px;border-radius:50%;background:var(--red);border:3px solid var(--bg2);box-shadow:0 0 12px var(--red);margin-bottom:10px;position:relative;z-index:1;}
+.tl-date{font-family:'Orbitron',monospace;font-size:10px;color:var(--red);letter-spacing:2px;margin-bottom:4px;}
+.tl-label{font-size:12px;color:#94a3b8;}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.footer-legend{font-size:10px;color:var(--muted);font-family:'Rajdhani';letter-spacing:2px;}
+
+/* MISC */
+.tag{display:inline-block;background:rgba(217,43,43,0.1);border:1px solid rgba(217,43,43,0.3);border-radius:20px;padding:2px 10px;font-size:9px;color:var(--red);font-family:'Rajdhani';letter-spacing:1px;margin:2px;}
+.tag-teal{background:rgba(0,255,231,0.08);border-color:rgba(0,255,231,0.25);color:var(--teal);}
+.tag-gold{background:rgba(249,168,37,0.08);border-color:rgba(249,168,37,0.25);color:var(--gold);}
+.info-box{background:rgba(249,168,37,0.06);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:12px 16px;font-size:12px;color:#94a3b8;margin:12px 0;line-height:1.6;}
+.info-box strong{color:#fff;}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════
+     1. HEADER
+══════════════════════════════ -->
+<div id="header">
+  <div class="header-inner">
+    <div class="forum-logo">ORACLE <span>FORUM</span> – CIERRE CONTABLE 2026</div>
+    <div class="header-badges">
+      <div class="badge-status">📅 Exposición pendiente · MAY-26</div>
+      <div class="badge-modules">✅ 6/6 Módulos analizados</div>
+      <div class="badge-count">⏱ ~8 min de lectura</div>
+      <button onclick="toggleMode()" id="toggle-btn" style="background:rgba(217,43,43,0.15);border:1px solid rgba(217,43,43,0.4);border-radius:20px;padding:5px 14px;font-family:'Rajdhani';font-size:11px;font-weight:700;letter-spacing:2px;color:var(--red);cursor:pointer;transition:0.2s">👁 MODO LECTURA</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     MAIN
+══════════════════════════════ -->
+<div class="main-wrap">
+<div class="main-col">
+
+<!-- ══════════════════════════════
+     2. HILO PRINCIPAL
+══════════════════════════════ -->
+<div class="thread-card">
+  <div class="thread-header">
+    <img class="avatar" src="https://i.imgur.com/RtssnS9.jpeg" onerror="this.src='https://ui-avatars.com/api/?name=EM&background=d92b2b&color=fff&size=52'" alt="Edgardo Moya">
+    <div class="poster-info">
+      <div class="poster-name">Edgardo Moya</div>
+      <div class="poster-role">Coordinador del Equipo · Oracle Retail / EBS · Sistemas de Información</div>
+      <div class="poster-date"><i class="fas fa-clock" style="margin-right:4px"></i>Mayo 2026 · Universidad del Zulia · Prof. Moralba Morillo</div>
+    </div>
+  </div>
+  <div class="thread-body">
+    <div class="thread-title">Oracle Retail en Farmatodo Venezuela</div>
+    <div class="thread-subtitle">EVALUACIÓN DE UN SISTEMA DE INFORMACIÓN · NIVEL 5 · GRUPO ORACLE</div>
+
+    <div class="body-text">
+      <p>Estimada profesora y compañeros. Nuestro equipo presenta el análisis de <strong>Oracle Retail Suite + Oracle E-Business Suite (EBS)</strong>, el sistema de información que Farmatodo Venezuela implementó en 2019 como plataforma tecnológica central para estandarizar sus operaciones en más de 300 tiendas en Venezuela y Colombia.</p>
+
+      <p>La elección no fue aleatoria: uno de los miembros de nuestro equipo, <strong>Kelis Ochoa</strong>, opera Oracle Xstore POS diariamente en Farmatodo, lo que nos permitió ir más allá de la investigación teórica y presentar evidencia de primera mano sobre cómo este sistema funciona en el contexto real venezolano.</p>
+
+      <p>Oracle no es solo un software — es el <strong>sistema nervioso</strong> de Farmatodo. Cada venta en caja se convierte automáticamente en un asiento contable en EBS, sin intervención humana, sin errores de transcripción. Cuando Venezuela ejecutó la reconversión monetaria al bolívar digital, Farmatodo procesó el cambio en pocas horas sin cerrar ninguna tienda. Eso es lo que diferencia a un sistema de información estratégico de un simple programa administrativo.</p>
+
+      <p>A continuación presentamos el análisis completo de módulos, el proceso contable automatizado, las fortalezas y debilidades del sistema en el contexto venezolano, y nuestra recomendación final como equipo consultor.</p>
+    </div>
+
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:16px;">
+      <span class="tag">ERP</span><span class="tag">SIT</span><span class="tag">SIG</span>
+      <span class="tag tag-teal">Oracle Retail 19+</span>
+      <span class="tag tag-teal">EBS 12.2</span>
+      <span class="tag tag-gold">Farmatodo Venezuela</span>
+      <span class="tag tag-gold">+300 Tiendas</span>
+    </div>
+
+    <a href="#" class="btn-presentation">
+      <i class="fas fa-presentation-screen"></i>
+      VER PRESENTACIÓN COMPLETA
+    </a>
+    <span style="font-size:10px;color:var(--muted);margin-left:12px;font-family:'Rajdhani';letter-spacing:1px;">*(Agregar link de presentación aquí)*</span>
+
+    <div class="divider"></div>
+
+    <!-- ══ 3. MÓDULOS ORACLE ══ -->
+    <div class="modules-section">
+      <div class="section-title">Análisis de Módulos Oracle</div>
+
+      <!-- GL -->
+      <div class="module-card">
+        <div class="module-header">
+          <div class="status-dot status-green"></div>
+          <div>
+            <div class="module-name">GL — General Ledger</div>
+            <div class="module-fullname">LIBRO MAYOR GENERAL · MÓDULO CENTRAL</div>
+          </div>
+          <div class="status-label" style="color:var(--green);font-family:'Rajdhani';font-size:10px;margin-left:auto">🟢 ACTIVO</div>
+        </div>
+        <div class="body-text" style="font-size:12px;margin-bottom:10px">El Libro Mayor de Oracle EBS consolida todos los asientos generados por los submódulos (AP, AR, FA) y los journals del Xstore POS via ReSA. El proceso <strong>Create Accounting</strong> ejecuta las reglas contables configuradas y transfiere automáticamente al GL, garantizando que débitos = créditos antes de postear.</div>
+        <div class="asiento-box">
+          <div style="font-size:10px;color:var(--muted);margin-bottom:8px;letter-spacing:2px">ASIENTO EJEMPLO — VENTA CONTADO FARMATODO</div>
+          <div class="asiento-row"><span class="asiento-cuenta">01.1101.001 · Caja Tienda</span><span class="asiento-db">Db 450.00</span><span style="color:var(--muted)">—</span></div>
+          <div class="asiento-row"><span class="asiento-cuenta">04.4101.001 · Ventas Retail</span><span style="color:var(--muted)">—</span><span class="asiento-cr">Cr 387.93</span></div>
+          <div class="asiento-row"><span class="asiento-cuenta">02.2201.001 · IVA por Pagar 16%</span><span style="color:var(--muted)">—</span><span class="asiento-cr">Cr 62.07</span></div>
+        </div>
+        <div class="trace-flow">
+          <span class="trace-step">Xstore POS</span><span class="trace-arrow">→</span>
+          <span class="trace-step">RTLog</span><span class="trace-arrow">→</span>
+          <span class="trace-step">ReSA Audit</span><span class="trace-arrow">→</span>
+          <span class="trace-step">Create Accounting</span><span class="trace-arrow">→</span>
+          <span class="trace-step">GL Posted</span>
+        </div>
+        <div class="obs-label">OBSERVACIONES DEL EQUIPO:</div>
+        <textarea class="obs-input" placeholder="Ej: El GL de Farmatodo consolida las 300 tiendas en tiempo real. El cierre mensual se ejecuta en horas vs días con sistemas anteriores..."></textarea>
+      </div>
+
+      <!-- AP -->
+      <div class="module-card">
+        <div class="module-header">
+          <div class="status-dot status-green"></div>
+          <div>
+            <div class="module-name">AP — Accounts Payable</div>
+            <div class="module-fullname">CUENTAS POR PAGAR · PROVEEDORES</div>
+          </div>
+          <div class="status-label" style="color:var(--green);font-family:'Rajdhani';font-size:10px;margin-left:auto">🟢 ACTIVO</div>
+        </div>
+        <div class="body-text" style="font-size:12px;margin-bottom:10px">Oracle AP gestiona las facturas de proveedores de Farmatodo aplicando automáticamente la retención del 75% de IVA como agente de retención, según la normativa SENIAT. El módulo genera el comprobante de retención y lo registra en el libro de compras.</div>
+        <div class="asiento-box">
+          <div style="font-size:10px;color:var(--muted);margin-bottom:8px;letter-spacing:2px">ASIENTO EJEMPLO — COMPRA PROVEEDOR + RETENCIÓN IVA 75%</div>
+          <div class="asiento-row"><span class="asiento-cuenta">01.1301.001 · Inventario Mercancía</span><span class="asiento-db">Db 1,000.00</span><span style="color:var(--muted)">—</span></div>
+          <div class="asiento-row"><span class="asiento-cuenta">01.1302.001 · IVA Crédito Fiscal 25%</span><span class="asiento-db">Db 16.00</span><span style="color:var(--muted)">—</span></div>
+          <div class="asiento-row"><span class="asiento-cuenta">02.2101.001 · Cuentas por Pagar</span><span style="color:var(--muted)">—</span><span class="asiento-cr">Cr 968.00</span></div>
+          <div class="asiento-row"><span class="asiento-cuenta">02.2202.001 · Ret. IVA por Pagar 75%</span><span style="color:var(--muted)">—</span><span class="asiento-cr">Cr 48.00</span></div>
+        </div>
+        <div class="trace-flow">
+          <span class="trace-step">Factura Proveedor</span><span class="trace-arrow">→</span>
+          <span class="trace-step">AP Invoice</span><span class="trace-arrow">→</span>
+          <span class="trace-step">Ret. SENIAT</span><span class="trace-arrow">→</span>
+          <span class="trace-step">Create Accounting</span><span class="trace-arrow">→</span>
+          <span class="trace-step">GL Posted</span>
+        </div>
+        <div class="obs-label">OBSERVACIONES DEL EQUIPO:</div>
+        <textarea class="obs-input" placeholder="Observaciones sobre el módulo AP en Farmatodo..."></textarea>
+      </div>
+
+      <!-- AR -->
+      <div class="module-card">
+        <div class="module-header">
+          <div class="status-dot status-green"></div>
+          <div>
+            <div class="module-name">AR — Accounts Receivable</div>
+            <div class="module-fullname">CUENTAS POR COBRAR · CLIENTES</div>
+          </div>
+          <div class="status-label" style="color:var(--green);font-family:'Rajdhani';font-size:10px;margin-left:auto">🟢 ACTIVO</div>
+        </div>
+        <div class="body-text" style="font-size:12px;margin-bottom:10px">Oracle AR registra las ventas a crédito y gestiona los anticipos de clientes en operaciones BOPIS (Buy Online, Pick Up In Store). El módulo alimenta al GL con los journals de cobros y devoluciones procesadas en el POS.</div>
+        <div class="asiento-box">
+          <div style="font-size:10px;color:var(--muted);margin-bottom:8px;letter-spacing:2px">ASIENTO EJEMPLO — COBRO TARJETA DÉBITO</div>
+          <div class="asiento-row"><span class="asiento-cuenta">01.1102.001 · Banco por Liquidar</span><span class="asiento-db">Db 250.00</span><span style="color:var(--muted)">—</span></div>
+          <div class="asiento-row"><span class="asiento-cuenta">04.4101.001 · Ventas Retail</span><span style="color:var(--muted)">—</span><span class="asiento-cr">Cr 215.52</span></div>
+          <div class="asiento-row"><span class="asiento-cuenta">02.2201.001 · IVA por Pagar 16%</span><span style="color:var(--muted)">—</span><span class="asiento-cr">Cr 34.48</span></div>
+        </div>
+        <div class="trace-flow">
+          <span class="trace-step">POS Cobro</span><span class="trace-arrow">→</span>
+          <span class="trace-step">AR Receipt</span><span class="trace-arrow">→</span>
+          <span class="trace-step">Create Accounting</span><span class="trace-arrow">→</span>
+          <span class="trace-step">GL Posted</span>
+        </div>
+        <div class="obs-label">OBSERVACIONES DEL EQUIPO:</div>
+        <textarea class="obs-input" placeholder="Observaciones sobre AR en Farmatodo..."></textarea>
+      </div>
+
+      <!-- FA -->
+      <div class="module-card">
+        <div class="module-header">
+          <div class="status-dot status-yellow"></div>
+          <div>
+            <div class="module-name">FA — Fixed Assets</div>
+            <div class="module-fullname">ACTIVOS FIJOS · DEPRECIACIÓN AUTOMÁTICA</div>
+          </div>
+          <div class="status-label" style="color:var(--yellow);font-family:'Rajdhani';font-size:10px;margin-left:auto">🟡 EN REVISIÓN</div>
+        </div>
+        <div class="body-text" style="font-size:12px;margin-bottom:10px">Oracle FA gestiona los activos de las 300+ tiendas Farmatodo — terminales POS, equipos de refrigeración, mobiliario — calculando depreciación automática según los métodos definidos y enviando el asiento mensual al GL.</div>
+        <div class="asiento-box">
+          <div style="font-size:10px;color:var(--muted);margin-bottom:8px;letter-spacing:2px">ASIENTO EJEMPLO — DEPRECIACIÓN MENSUAL EQUIPOS POS</div>
+          <div class="asiento-row"><span class="asiento-cuenta">05.6101.001 · Gasto Depreciación Equipo</span><span class="asiento-db">Db 480.00</span><span style="color:var(--muted)">—</span></div>
+          <div class="asiento-row"><span class="asiento-cuenta">01.1501.002 · Dep. Acum. Equipo Tecnológico</span><span style="color:var(--muted)">—</span><span class="asiento-cr">Cr 480.00</span></div>
+        </div>
+        <div class="trace-flow">
+          <span class="trace-step">FA Depreciation Run</span><span class="trace-arrow">→</span>
+          <span class="trace-step">Create Accounting</span><span class="trace-arrow">→</span>
+          <span class="trace-step">GL Posted</span>
+        </div>
+        <div class="obs-label">OBSERVACIONES DEL EQUIPO:</div>
+        <textarea class="obs-input" placeholder="Observaciones sobre FA en Farmatodo..."></textarea>
+      </div>
+
+      <!-- IGTF -->
+      <div class="module-card">
+        <div class="module-header">
+          <div class="status-dot status-green"></div>
+          <div>
+            <div class="module-name">CM — Cash Management</div>
+            <div class="module-fullname">GESTIÓN DE CAJA · IGTF · DIVISAS</div>
+          </div>
+          <div class="status-label" style="color:var(--green);font-family:'Rajdhani';font-size:10px;margin-left:auto">🟢 ACTIVO</div>
+        </div>
+        <div class="body-text" style="font-size:12px;margin-bottom:10px">En el contexto venezolano, este módulo gestiona las operaciones en divisas y calcula el IGTF (Impuesto a Grandes Transacciones Financieras) automáticamente sobre los pagos en moneda extranjera, un diferenciador clave para Farmatodo como contribuyente especial.</div>
+        <div class="asiento-box">
+          <div style="font-size:10px;color:var(--muted);margin-bottom:8px;letter-spacing:2px">ASIENTO EJEMPLO — VENTA USD + IGTF</div>
+          <div class="asiento-row"><span class="asiento-cuenta">01.1103.001 · Caja Dólares</span><span class="asiento-db">Db 100.00</span><span style="color:var(--muted)">—</span></div>
+          <div class="asiento-row"><span class="asiento-cuenta">04.4101.001 · Ventas Retail</span><span style="color:var(--muted)">—</span><span class="asiento-cr">Cr 96.97</span></div>
+          <div class="asiento-row"><span class="asiento-cuenta">05.6201.001 · Gasto IGTF 3%</span><span class="asiento-db">Db 3.03</span><span style="color:var(--muted)">—</span></div>
+        </div>
+        <div class="trace-flow">
+          <span class="trace-step">POS Divisa</span><span class="trace-arrow">→</span>
+          <span class="trace-step">IGTF Calc.</span><span class="trace-arrow">→</span>
+          <span class="trace-step">CM Journal</span><span class="trace-arrow">→</span>
+          <span class="trace-step">GL Posted</span>
+        </div>
+        <div class="obs-label">OBSERVACIONES DEL EQUIPO:</div>
+        <textarea class="obs-input" placeholder="Observaciones sobre IGTF y divisas en Farmatodo..."></textarea>
+      </div>
+
+      <!-- PA -->
+      <div class="module-card">
+        <div class="module-header">
+          <div class="status-dot status-green"></div>
+          <div>
+            <div class="module-name">INV — Inventory / ReSA</div>
+            <div class="module-fullname">INVENTARIO · RETAIL SALES AUDIT</div>
+          </div>
+          <div class="status-label" style="color:var(--green);font-family:'Rajdhani';font-size:10px;margin-left:auto">🟢 ACTIVO</div>
+        </div>
+        <div class="body-text" style="font-size:12px;margin-bottom:10px">Oracle ReSA actúa como el guardián entre el POS y la contabilidad. Valida cada transacción, bloquea excepciones (descuentos excesivos, devoluciones sospechosas) y solo transfiere a EBS las transacciones limpias. Store Inventory Management descuenta el inventario en tiempo real por cada venta.</div>
+        <div class="asiento-box">
+          <div style="font-size:10px;color:var(--muted);margin-bottom:8px;letter-spacing:2px">ASIENTO EJEMPLO — COSTO DE VENTA (COGS)</div>
+          <div class="asiento-row"><span class="asiento-cuenta">05.5101.001 · Costo de Ventas</span><span class="asiento-db">Db 280.00</span><span style="color:var(--muted)">—</span></div>
+          <div class="asiento-row"><span class="asiento-cuenta">01.1301.001 · Inventario Mercancía</span><span style="color:var(--muted)">—</span><span class="asiento-cr">Cr 280.00</span></div>
+        </div>
+        <div class="trace-flow">
+          <span class="trace-step">Venta POS</span><span class="trace-arrow">→</span>
+          <span class="trace-step">ReSA Audit</span><span class="trace-arrow">→</span>
+          <span class="trace-step">INV Update</span><span class="trace-arrow">→</span>
+          <span class="trace-step">COGS GL</span>
+        </div>
+        <div class="obs-label">OBSERVACIONES DEL EQUIPO:</div>
+        <textarea class="obs-input" placeholder="Observaciones sobre inventario y ReSA en Farmatodo..."></textarea>
+      </div>
+
+    </div><!-- /modules -->
+
+    <div class="divider"></div>
+
+    <div class="info-box">
+      <strong>🔑 Dato clave para la profesora:</strong> Cuando Venezuela ejecutó la reconversión monetaria al bolívar digital, Farmatodo actualizó todos los módulos Oracle en pocas horas sin interrumpir operaciones en ninguna de sus 300+ tiendas. Esto demuestra en la práctica lo que estudiamos en clase: un sistema de información robusto es la ventaja competitiva más poderosa de una organización.
+    </div>
+
+  </div><!-- /thread-body -->
+</div><!-- /thread-card -->
+
+<!-- ══════════════════════════════
+     4. RESPUESTAS ANIDADAS
+══════════════════════════════ -->
+<div class="replies-section">
+  <div class="section-title">Aportes del Equipo</div>
+
+  <!-- EDGARDO -->
+  <div class="reply">
+    <div class="reply-header">
+      <img class="avatar-sm" src="https://i.imgur.com/RtssnS9.jpeg" onerror="this.src='https://ui-avatars.com/api/?name=EM&background=d92b2b&color=fff'" alt="Edgardo">
+      <div class="reply-meta">
+        <div class="reply-name">Edgardo Moya <span class="tag" style="margin-left:6px;font-size:9px">COORDINADOR</span></div>
+        <div class="reply-role">Reflexión personal · Mayo 2026</div>
+      </div>
+    </div>
+    <div class="reply-text">
+      Este análisis nos permite comprender cómo un ERP como Oracle trasciende la simple gestión de datos para convertirse en el sistema nervioso central de una organización. Lo que más llama la atención es que Farmatodo procesó la reconversión monetaria al bolívar digital en pocas horas sin detener ninguna tienda — algo impensable sin un sistema de información robusto. Oracle es el ejemplo perfecto de cómo un <strong>SIT, un SIG y un ERP</strong> pueden coexistir en una sola plataforma, convirtiendo cada transacción operativa en información estratégica para todos los niveles organizacionales. Esta investigación reafirma que el contador del siglo XXI no puede limitarse a los libros — debe entender los sistemas que generan esa información.
+    </div>
+    <div class="reply-actions">
+      <button class="btn-like" onclick="this.innerHTML='<i class=\'fas fa-thumbs-up\'></i> '+( parseInt(this.dataset.n||0)+1)+' Útil';this.dataset.n=(parseInt(this.dataset.n||0)+1);this.style.color='var(--gold)';this.style.borderColor='var(--gold)'"><i class="fas fa-thumbs-up"></i> Útil</button>
+    </div>
+  </div>
+
+  <!-- MARYORI -->
+  <div class="reply" id="reply-maryori">
+    <div class="reply-header">
+      <img class="avatar-sm" src="https://i.imgur.com/DtlPOdM.jpeg" onerror="this.src='https://ui-avatars.com/api/?name=MA&background=cc5500&color=fff'" alt="Maryori">
+      <div class="reply-meta">
+        <div class="reply-name">Maryori Azuaje <span class="tag tag-gold" style="margin-left:6px;font-size:9px">CUMPLIMIENTO</span></div>
+        <div class="reply-role">Reflexión personal · Mayo 2026</div>
+      </div>
+    </div>
+    <div class="construction-box">
+      <div class="construction-label">🔧 ESPACIO — MARYORI AZUAJE</div>
+      <div class="construction-hint" style="margin-top:8px">
+        Maryori, aquí publicas tu reflexión:<br>
+        <ul style="margin-top:6px">
+          <li>¿Qué vas a aprender de Oracle como sistema de información?</li>
+          <li>¿Qué es lo que más te llama la atención del sistema?</li>
+          <li>¿Cómo conectas Oracle con los contenidos vistos en clase?</li>
+        </ul>
+      </div>
+      <div id="composer-maryori" style="display:none;margin-top:12px">
+        <textarea class="composer-input" id="text-maryori" placeholder="Escribe tu reflexión aquí... Mínimo 5 líneas. Redacta como experta, no como técnica." style="min-height:100px"></textarea>
+        <div style="margin-top:8px">
+          <div class="composer-label">📎 ADJUNTAR ARCHIVO O IMAGEN</div>
+          <input type="file" id="file-maryori" accept="image/*,.pdf,.xlsx,.docx" style="margin:6px 0;font-size:11px;color:var(--muted)">
+        </div>
+        <div style="margin-top:8px">
+          <div class="composer-label">🔗 PEGAR LINK (Google Drive, Canva, YouTube...)</div>
+          <input type="url" id="link-maryori" placeholder="https://..." style="width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--text);font-size:11px;margin-top:4px">
+        </div>
+        <div class="composer-actions" style="margin-top:10px">
+          <button class="btn-submit" onclick="publishReply('maryori')"><i class="fas fa-paper-plane" style="margin-right:6px"></i>PUBLICAR</button>
+        </div>
+      </div>
+    </div>
+    <div class="reply-actions">
+      <button class="btn-reply" onclick="toggleComposer('maryori')"><i class="fas fa-reply"></i> Responder</button>
+    </div>
+  </div>
+
+  <!-- KELIS -->
+  <div class="reply" id="reply-kelis">
+    <div class="reply-header">
+      <img class="avatar-sm" src="https://i.imgur.com/jeckcVL.jpeg" onerror="this.src='https://ui-avatars.com/api/?name=KO&background=cc5500&color=fff'" alt="Kelis">
+      <div class="reply-meta">
+        <div class="reply-name">Kelis Ochoa <span class="tag tag-teal" style="margin-left:6px;font-size:9px">EXPOSITORA · USUARIA REAL</span></div>
+        <div class="reply-role">Reflexión personal · Mayo 2026</div>
+      </div>
+    </div>
+    <div class="construction-box">
+      <div class="construction-label">🔧 ESPACIO — KELIS OCHOA</div>
+      <div class="construction-hint" style="margin-top:8px">
+        Kelis, tú tienes el aporte más valioso — eres la única que usa Oracle en la vida real:<br>
+        <ul style="margin-top:6px">
+          <li>¿Qué procesos manejas directamente en Farmatodo con Oracle?</li>
+          <li>¿Qué descubres al investigar más allá de tu rol operativo?</li>
+          <li>¿Qué es lo que más te sorprende del sistema completo?</li>
+          <li>¿Qué mejorarías desde tu experiencia como usuaria?</li>
+        </ul>
+      </div>
+      <div id="composer-kelis" style="display:none;margin-top:12px">
+        <textarea class="composer-input" id="text-kelis" placeholder="Tu testimonio real vale más que cualquier investigación. Mínimo 5 líneas." style="min-height:100px"></textarea>
+        <div style="margin-top:8px">
+          <div class="composer-label">📎 ADJUNTAR ARCHIVO O IMAGEN</div>
+          <input type="file" id="file-kelis" accept="image/*,.pdf,.xlsx,.docx" style="margin:6px 0;font-size:11px;color:var(--muted)">
+        </div>
+        <div style="margin-top:8px">
+          <div class="composer-label">🔗 PEGAR LINK</div>
+          <input type="url" id="link-kelis" placeholder="https://..." style="width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--text);font-size:11px;margin-top:4px">
+        </div>
+        <div class="composer-actions" style="margin-top:10px">
+          <button class="btn-submit" onclick="publishReply('kelis')"><i class="fas fa-paper-plane" style="margin-right:6px"></i>PUBLICAR</button>
+        </div>
+      </div>
+    </div>
+    <div class="reply-actions">
+      <button class="btn-reply" onclick="toggleComposer('kelis')"><i class="fas fa-reply"></i> Responder</button>
+    </div>
+  </div>
+
+  <!-- NAYROBY -->
+  <div class="reply" id="reply-nayroby">
+    <div class="reply-header">
+      <img class="avatar-sm" src="https://i.imgur.com/3YVY98r.jpeg" onerror="this.src='https://ui-avatars.com/api/?name=NF&background=cc5500&color=fff'" alt="Nayroby">
+      <div class="reply-meta">
+        <div class="reply-name">Nayroby Figueroa <span class="tag tag-gold" style="margin-left:6px;font-size:9px">INVESTIGADORA</span></div>
+        <div class="reply-role">Reflexión personal · Mayo 2026</div>
+      </div>
+    </div>
+    <div class="construction-box">
+      <div class="construction-label">🔧 ESPACIO — NAYROBY FIGUEROA</div>
+      <div class="construction-hint" style="margin-top:8px">
+        Nayroby, aquí publicas tu reflexión:<br>
+        <ul style="margin-top:6px">
+          <li>¿Qué descubres investigando Oracle?</li>
+          <li>¿Qué es lo que más te llama la atención?</li>
+          <li>¿Cómo conectas Oracle con los contenidos de Sistemas de Información?</li>
+          <li>¿Qué ventaja o desafío te parece más relevante para Venezuela?</li>
+        </ul>
+      </div>
+      <div id="composer-nayroby" style="display:none;margin-top:12px">
+        <textarea class="composer-input" id="text-nayroby" placeholder="Redacta como analista experta. Mínimo 5 líneas." style="min-height:100px"></textarea>
+        <div style="margin-top:8px">
+          <div class="composer-label">📎 ADJUNTAR ARCHIVO O IMAGEN</div>
+          <input type="file" id="file-nayroby" accept="image/*,.pdf,.xlsx,.docx" style="margin:6px 0;font-size:11px;color:var(--muted)">
+        </div>
+        <div style="margin-top:8px">
+          <div class="composer-label">🔗 PEGAR LINK</div>
+          <input type="url" id="link-nayroby" placeholder="https://..." style="width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--text);font-size:11px;margin-top:4px">
+        </div>
+        <div class="composer-actions" style="margin-top:10px">
+          <button class="btn-submit" onclick="publishReply('nayroby')"><i class="fas fa-paper-plane" style="margin-right:6px"></i>PUBLICAR</button>
+        </div>
+      </div>
+    </div>
+    <div class="reply-actions">
+      <button class="btn-reply" onclick="toggleComposer('nayroby')"><i class="fas fa-reply"></i> Responder</button>
+    </div>
+  </div>
+
+  <!-- YOLIMAR -->
+  <div class="reply" id="reply-yolimar">
+    <div class="reply-header">
+      <img class="avatar-sm" src="https://i.imgur.com/ptagDNz.jpeg" onerror="this.src='https://ui-avatars.com/api/?name=YM&background=cc5500&color=fff'" alt="Yolimar">
+      <div class="reply-meta">
+        <div class="reply-name">Yolimar Marcano <span class="tag" style="margin-left:6px;font-size:9px">ESTRATEGA</span></div>
+        <div class="reply-role">Reflexión personal · Mayo 2026</div>
+      </div>
+    </div>
+    <div class="construction-box">
+      <div class="construction-label">🔧 ESPACIO — YOLIMAR MARCANO</div>
+      <div class="construction-hint" style="margin-top:8px">
+        Yolimar, aquí publicas tu reflexión:<br>
+        <ul style="margin-top:6px">
+          <li>¿Qué vas a aprender de Oracle como sistema de información?</li>
+          <li>¿Qué ventaja estratégica te parece más poderosa?</li>
+          <li>¿Lo recomendarías para empresas venezolanas? ¿Por qué sí o por qué no?</li>
+          <li>¿Cómo conectas esto con tu visión como futura contadora?</li>
+        </ul>
+      </div>
+      <div id="composer-yolimar" style="display:none;margin-top:12px">
+        <textarea class="composer-input" id="text-yolimar" placeholder="Tu perspectiva estratégica es clave para cerrar el foro. Mínimo 5 líneas." style="min-height:100px"></textarea>
+        <div style="margin-top:8px">
+          <div class="composer-label">📎 ADJUNTAR ARCHIVO O IMAGEN</div>
+          <input type="file" id="file-yolimar" accept="image/*,.pdf,.xlsx,.docx" style="margin:6px 0;font-size:11px;color:var(--muted)">
+        </div>
+        <div style="margin-top:8px">
+          <div class="composer-label">🔗 PEGAR LINK</div>
+          <input type="url" id="link-yolimar" placeholder="https://..." style="width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--text);font-size:11px;margin-top:4px">
+        </div>
+        <div class="composer-actions" style="margin-top:10px">
+          <button class="btn-submit" onclick="publishReply('yolimar')"><i class="fas fa-paper-plane" style="margin-right:6px"></i>PUBLICAR</button>
+        </div>
+      </div>
+    </div>
+    <div class="reply-actions">
+      <button class="btn-reply" onclick="toggleComposer('yolimar')"><i class="fas fa-reply"></i> Responder</button>
+    </div>
+  </div>
+
+</div><!-- /replies -->
+
+<!-- ══════════════════════════════
+     PREGUNTAS ANTICIPADAS
+══════════════════════════════ -->
+<div class="thread-card" style="margin-top:20px">
+  <div class="thread-body">
+    <div class="section-title">Preguntas Anticipadas — Debate Estratégico</div>
+    <p style="font-size:11px;color:var(--muted);margin-bottom:16px">Preguntas que la profesora o los compañeros podrían plantear durante la exposición, con respuestas preparadas.</p>
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="background:rgba(0,0,0,0.3);border:1px solid rgba(217,43,43,0.2);border-radius:10px;padding:14px 18px">
+        <div style="font-size:11px;font-weight:700;color:var(--red);font-family:'Rajdhani';letter-spacing:1px;margin-bottom:6px">❓ ¿Por qué Oracle y no un sistema más accesible como Profit Plus o Mónica?</div>
+        <div style="font-size:12px;color:#94a3b8;line-height:1.65"><strong style="color:#fff">Respuesta:</strong> Oracle no es la solución para toda empresa — es la solución correcta para Farmatodo. Con +300 tiendas, condición de contribuyente especial y operación en dos países, Farmatodo necesita un sistema que escale, que opere offline durante los apagones venezolanos y que procese miles de transacciones simultáneas sin perder la trazabilidad fiscal. Profit Plus y Mónica son excelentes para PYMEs, pero no están diseñados para ese nivel de complejidad operativa.</div>
+      </div>
+      <div style="background:rgba(0,0,0,0.3);border:1px solid rgba(217,43,43,0.2);border-radius:10px;padding:14px 18px">
+        <div style="font-size:11px;font-weight:700;color:var(--red);font-family:'Rajdhani';letter-spacing:1px;margin-bottom:6px">❓ ¿Cómo garantiza Oracle el cumplimiento con el SENIAT en el contexto venezolano?</div>
+        <div style="font-size:12px;color:#94a3b8;line-height:1.65"><strong style="color:#fff">Respuesta:</strong> Oracle EBS genera automáticamente los libros de IVA (ventas y compras), aplica las alícuotas correctas (16%, 8%, 0%) según el tipo de producto farmacéutico, calcula la retención del 75% como agente de retención, maneja el IGTF en operaciones con divisas y produce el archivo XML listo para declarar ante el portal del SENIAT. Cuando Venezuela ejecutó la reconversión monetaria, Farmatodo actualizó todos sus sistemas en pocas horas — eso es cumplimiento normativo en tiempo real.</div>
+      </div>
+      <div style="background:rgba(0,0,0,0.3);border:1px solid rgba(217,43,43,0.2);border-radius:10px;padding:14px 18px">
+        <div style="font-size:11px;font-weight:700;color:var(--red);font-family:'Rajdhani';letter-spacing:1px;margin-bottom:6px">❓ ¿Qué diferencia a Oracle de cualquier otro ERP que un estudiante podría analizar?</div>
+        <div style="font-size:12px;color:#94a3b8;line-height:1.65"><strong style="color:#fff">Respuesta:</strong> Tres diferencias clave: primero, Oracle opera con evidencia de primera mano — Kelis Ochoa usa Xstore POS diariamente en Farmatodo. Segundo, Oracle demuestra en la práctica cómo un SIT, un SIG y un ERP coexisten en una sola plataforma, lo que conecta directamente con los contenidos del Módulo II de la materia. Tercero, Oracle resuelve el problema más específico del contexto venezolano: mantener operaciones continuas ante apagones, inflación y cambios normativos frecuentes.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     COMENTARIOS PÚBLICOS
+══════════════════════════════ -->
+<div class="thread-card" style="margin-top:20px">
+  <div class="thread-body">
+    <div class="section-title">Comentarios y Debate</div>
+    <p style="font-size:12px;color:var(--muted);margin-bottom:16px">¿Tienes una pregunta, aporte o comparación con otro sistema? Déjalo aquí.</p>
+    <div id="public-comments"></div>
+    <div class="reply-composer">
+      <div class="composer-label">TU NOMBRE</div>
+      <input type="text" id="pub-name" placeholder="Ej: María González" style="width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--text);font-size:12px;margin-bottom:8px">
+      <div class="composer-label">TU COMENTARIO</div>
+      <textarea class="composer-input" id="pub-text" placeholder="Escribe tu comentario, pregunta técnica o aporte al debate..."></textarea>
+      <div style="margin-top:8px">
+        <div class="composer-label">📎 ADJUNTAR ARCHIVO O IMAGEN (opcional)</div>
+        <input type="file" id="pub-file" accept="image/*,.pdf" style="margin:6px 0;font-size:11px;color:var(--muted)">
+      </div>
+      <div style="margin-top:8px">
+        <div class="composer-label">🔗 PEGAR LINK (opcional)</div>
+        <input type="url" id="pub-link" placeholder="https://..." style="width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--text);font-size:11px;margin-top:4px">
+      </div>
+      <div class="composer-actions" style="margin-top:10px">
+        <button class="btn-submit" onclick="publishPublic()"><i class="fas fa-paper-plane" style="margin-right:6px"></i>PUBLICAR COMENTARIO</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     6. CHECKLIST EXPOSICIÓN
+══════════════════════════════ -->
+<div class="thread-card" style="margin-top:20px">
+  <div class="thread-body">
+    <div class="section-title">Checklist de Preparación — Exposición Oracle</div>
+    <table class="checklist-table">
+      <thead>
+        <tr><th>MÓDULO</th><th>ACTIVIDAD</th><th>RESPONSABLE</th><th>LISTO</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>GL</td><td>Analizar Posting journals del período</td><td>Edgardo Moya</td><td><input type="checkbox" class="chk"></td></tr>
+        <tr><td>AP</td><td>Investigar Retenciones IVA SENIAT</td><td>Maryori Azuaje</td><td><input type="checkbox" class="chk"></td></tr>
+        <tr><td>AR</td><td>Analizar conciliación cobros POS</td><td>Kelis Ochoa</td><td><input type="checkbox" class="chk"></td></tr>
+        <tr><td>FA</td><td>Investigar depreciación activos</td><td>Nayroby Figueroa</td><td><input type="checkbox" class="chk"></td></tr>
+        <tr><td>CM</td><td>Analizar revaluación divisas / IGTF</td><td>Yolimar Marcano</td><td><input type="checkbox" class="chk"></td></tr>
+        <tr><td>INV/ReSA</td><td>Documentar inventario y auditoría</td><td>Kelis Ochoa</td><td><input type="checkbox" class="chk"></td></tr>
+        <tr><td>Presentación</td><td>Ensayar exposición completa</td><td>Todo el equipo</td><td><input type="checkbox" class="chk"></td></tr>
+        <tr><td>Foro</td><td>Publicar aportes individuales</td><td>Todo el equipo</td><td><input type="checkbox" class="chk"></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     7. ESPACIO EVIDENCIAS
+══════════════════════════════ -->
+<div class="thread-card" style="margin-top:20px">
+  <div class="thread-body">
+    <div class="section-title">Evidencias por Integrante</div>
+
+    <div class="evidence-card">
+      <div class="evidence-name">Edgardo Moya</div>
+      <div class="evidence-role">COORDINADOR · ANÁLISIS GENERAL</div>
+      <label class="evidence-upload"><i class="fas fa-paperclip"></i> Adjuntar archivo o imagen<input type="file" accept="image/*,.pdf,.xlsx,.docx" style="display:none"></label>
+      <div style="margin-top:6px">
+        <input type="url" placeholder="🔗 Pegar link (Google Drive, Canva, YouTube...)" style="width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:7px 12px;color:var(--text);font-size:11px">
+      </div>
+      <textarea class="evidence-comment" placeholder="Comentario técnico sobre la evidencia...">Presentación completa del sistema Oracle en Farmatodo — análisis de módulos, proceso contable automatizado, matriz de evaluación y recomendación final.</textarea>
+      <div class="evidence-deadline">📅 Fecha límite: antes de la exposición</div>
+    </div>
+
+    <div class="evidence-card">
+      <div class="evidence-name">Maryori Azuaje</div>
+      <div class="evidence-role">CUMPLIMIENTO NORMATIVO</div>
+      <label class="evidence-upload"><i class="fas fa-paperclip"></i> Adjuntar archivo o imagen<input type="file" accept="image/*,.pdf,.xlsx,.docx" style="display:none"></label>
+      <div style="margin-top:6px">
+        <input type="url" placeholder="🔗 Pegar link (Google Drive, Canva, YouTube...)" style="width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:7px 12px;color:var(--text);font-size:11px">
+      </div>
+      <textarea class="evidence-comment" placeholder="Maryori: adjunta evidencia sobre cumplimiento SENIAT, libros de IVA, retenciones..."></textarea>
+      <div class="evidence-deadline">📅 Fecha límite: antes de la exposición</div>
+    </div>
+
+    <div class="evidence-card">
+      <div class="evidence-name">Kelis Ochoa</div>
+      <div class="evidence-role">EXPOSITORA · USUARIA REAL FARMATODO</div>
+      <label class="evidence-upload"><i class="fas fa-paperclip"></i> Adjuntar archivo o imagen<input type="file" accept="image/*,.pdf,.xlsx,.docx" style="display:none"></label>
+      <div style="margin-top:6px">
+        <input type="url" placeholder="🔗 Pegar link (Google Drive, Canva, YouTube...)" style="width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:7px 12px;color:var(--text);font-size:11px">
+      </div>
+      <textarea class="evidence-comment" placeholder="Kelis: adjunta capturas o descripciones de lo que manejas en Oracle en Farmatodo..."></textarea>
+      <div class="evidence-deadline">📅 Fecha límite: antes de la exposición</div>
+    </div>
+
+    <div class="evidence-card">
+      <div class="evidence-name">Nayroby Figueroa</div>
+      <div class="evidence-role">INVESTIGADORA Y ANALISTA</div>
+      <label class="evidence-upload"><i class="fas fa-paperclip"></i> Adjuntar archivo o imagen<input type="file" accept="image/*,.pdf,.xlsx,.docx" style="display:none"></label>
+      <div style="margin-top:6px">
+        <input type="url" placeholder="🔗 Pegar link (Google Drive, Canva, YouTube...)" style="width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:7px 12px;color:var(--text);font-size:11px">
+      </div>
+      <textarea class="evidence-comment" placeholder="Nayroby: adjunta evidencia de investigación — fuentes, estadísticas, casos de uso..."></textarea>
+      <div class="evidence-deadline">📅 Fecha límite: antes de la exposición</div>
+    </div>
+
+    <div class="evidence-card">
+      <div class="evidence-name">Yolimar Marcano</div>
+      <div class="evidence-role">ESTRATEGA Y EVALUADORA</div>
+      <label class="evidence-upload"><i class="fas fa-paperclip"></i> Adjuntar archivo o imagen<input type="file" accept="image/*,.pdf,.xlsx,.docx" style="display:none"></label>
+      <div style="margin-top:6px">
+        <input type="url" placeholder="🔗 Pegar link (Google Drive, Canva, YouTube...)" style="width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:7px 12px;color:var(--text);font-size:11px">
+      </div>
+      <textarea class="evidence-comment" placeholder="Yolimar: adjunta evidencia sobre análisis estratégico, matriz de evaluación, propuestas..."></textarea>
+      <div class="evidence-deadline">📅 Fecha límite: antes de la exposición</div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- /main-col -->
+
+<!-- ══════════════════════════════
+     SIDEBAR
+══════════════════════════════ -->
+<div class="sidebar">
+
+  <div class="sidebar-card">
+    <div class="sidebar-title">Equipo Estratégico</div>
+    <div class="team-member">
+      <img class="avatar-xs" src="https://i.imgur.com/RtssnS9.jpeg" onerror="this.src='https://ui-avatars.com/api/?name=EM&background=d92b2b&color=fff'" alt="Edgardo">
+      <div class="tm-info"><div class="tm-name">Edgardo Moya</div><div class="tm-role">Coordinador</div></div>
+      <div class="tm-status"><div class="dot-online"></div></div>
+    </div>
+    <div class="team-member">
+      <img class="avatar-xs" src="https://i.imgur.com/DtlPOdM.jpeg" onerror="this.src='https://ui-avatars.com/api/?name=MA&background=cc5500&color=fff'" alt="Maryori">
+      <div class="tm-info"><div class="tm-name">Maryori Azuaje</div><div class="tm-role">Cumplimiento</div></div>
+      <div class="tm-status"><div class="dot-pending"></div></div>
+    </div>
+    <div class="team-member">
+      <img class="avatar-xs" src="https://i.imgur.com/jeckcVL.jpeg" onerror="this.src='https://ui-avatars.com/api/?name=KO&background=cc5500&color=fff'" alt="Kelis">
+      <div class="tm-info"><div class="tm-name">Kelis Ochoa</div><div class="tm-role">Expositora</div></div>
+      <div class="tm-status"><div class="dot-pending"></div></div>
+    </div>
+    <div class="team-member">
+      <img class="avatar-xs" src="https://i.imgur.com/3YVY98r.jpeg" onerror="this.src='https://ui-avatars.com/api/?name=NF&background=cc5500&color=fff'" alt="Nayroby">
+      <div class="tm-info"><div class="tm-name">Nayroby Figueroa</div><div class="tm-role">Investigadora</div></div>
+      <div class="tm-status"><div class="dot-pending"></div></div>
+    </div>
+    <div class="team-member">
+      <img class="avatar-xs" src="https://i.imgur.com/ptagDNz.jpeg" onerror="this.src='https://ui-avatars.com/api/?name=YM&background=cc5500&color=fff'" alt="Yolimar">
+      <div class="tm-info"><div class="tm-name">Yolimar Marcano</div><div class="tm-role">Estratega</div></div>
+      <div class="tm-status"><div class="dot-pending"></div></div>
+    </div>
+  </div>
+
+  <div class="sidebar-card">
+    <div class="sidebar-title">Estadísticas del Foro</div>
+    <div class="stat-row"><span class="stat-label">Módulos analizados</span><span class="stat-val">6/6</span></div>
+    <div class="stat-row"><span class="stat-label">Asientos documentados</span><span class="stat-val">6</span></div>
+    <div class="stat-row"><span class="stat-label">Tiendas Farmatodo</span><span class="stat-val">300+</span></div>
+    <div class="stat-row"><span class="stat-label">Aportes publicados</span><span class="stat-val">1/5</span></div>
+    <div class="stat-row"><span class="stat-label">Evidencias adjuntas</span><span class="stat-val">0/5</span></div>
+  </div>
+
+  <div class="sidebar-card">
+    <div class="sidebar-title">Sistema Analizado</div>
+    <div style="font-size:12px;color:#94a3b8;line-height:1.7">
+      <p style="margin-bottom:6px"><strong style="color:#fff">Oracle Retail Suite</strong><br>+ E-Business Suite EBS 12.2</p>
+      <p style="margin-bottom:6px"><strong style="color:#fff">Empresa:</strong> Farmatodo Venezuela</p>
+      <p style="margin-bottom:6px"><strong style="color:#fff">Sector:</strong> Retail farmacéutico</p>
+      <p style="margin-bottom:6px"><strong style="color:#fff">Implementación:</strong> 2019</p>
+      <p><strong style="color:#fff">Clasificación:</strong> ERP + SIT + SIG</p>
+    </div>
+  </div>
+
+  <div class="sidebar-card">
+    <div class="sidebar-title">Presentación</div>
+    <a href="#" class="btn-presentation" style="font-size:10px;padding:10px 16px;display:flex;justify-content:center">
+      <i class="fas fa-presentation-screen"></i> VER PRESENTACIÓN
+    </a>
+    <p style="font-size:10px;color:var(--muted);text-align:center;margin-top:8px;font-family:'Rajdhani';letter-spacing:1px">*(Agregar link aquí)*</p>
+  </div>
+
+</div><!-- /sidebar -->
+</div><!-- /main-wrap -->
+
+<!-- ══════════════════════════════
+     8. FOOTER
+══════════════════════════════ -->
+<div id="footer">
+  <div class="footer-inner">
+    <div class="section-title" style="margin-bottom:24px">Timeline Ejecutiva</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">MAYO 2026</div>
+        <div class="tl-label">Apertura del foro y análisis de módulos Oracle</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">19 MAYO 2026</div>
+        <div class="tl-label">Aportes individuales y evidencias del equipo</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">EXPOSICIÓN</div>
+        <div class="tl-label">Presentación en vivo — Kelis Ochoa expone</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-legend">FORO COLABORATIVO · CIERRE CONTABLE ORACLE 2026 · SISTEMAS DE INFORMACIÓN · ULZ</div>
+      <a href="#" class="btn-presentation" style="font-size:10px;padding:8px 18px">
+        <i class="fas fa-presentation-screen"></i> PRESENTACIÓN COMPLETA
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Firebase SDK -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getDatabase, ref, set, onValue, push } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAAirV6ilc4Fn_B7QEpn8nbjhVEB0wj1QQ",
+  authDomain: "oracle-foro-luz.firebaseapp.com",
+  projectId: "oracle-foro-luz",
+  storageBucket: "oracle-foro-luz.firebasestorage.app",
+  messagingSenderId: "770746089928",
+  appId: "1:770746089928:web:cd4fd2bebbc179f8f100fd",
+  databaseURL: "https://oracle-foro-luz-default-rtdb.firebaseio.com"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+// ── NOMBRES DE INTEGRANTES ──
+const MEMBERS = ['maryori','kelis','nayroby','yolimar'];
+const MEMBER_NAMES = {
+  maryori:'Maryori Azuaje',
+  kelis:'Kelis Ochoa',
+  nayroby:'Nayroby Figueroa',
+  yolimar:'Yolimar Marcano'
+};
+const MEMBER_IMGS = {
+  maryori:'https://i.imgur.com/DtlPOdM.jpeg',
+  kelis:'https://i.imgur.com/jeckcVL.jpeg',
+  nayroby:'https://i.imgur.com/3YVY98r.jpeg',
+  yolimar:'https://i.imgur.com/ptagDNz.jpeg'
+};
+
+// ── CARGAR APORTES AL INICIAR ──
+MEMBERS.forEach(name=>{
+  onValue(ref(db,`aportes/${name}`), snap=>{
+    if(snap.exists()){
+      const data=snap.val();
+      renderAporte(name, data);
+    }
+  });
+});
+
+// ── CARGAR COMENTARIOS PÚBLICOS ──
+onValue(ref(db,'comentarios'), snap=>{
+  const container=document.getElementById('public-comments');
+  container.innerHTML='';
+  if(snap.exists()){
+    const comentarios=snap.val();
+    const lista=Object.values(comentarios).sort((a,b)=>b.timestamp-a.timestamp);
+    lista.forEach(c=>renderComentario(c));
+  }
+  updateStats();
+});
+
+// ── RENDERIZAR APORTE DE INTEGRANTE ──
+function renderAporte(name, data){
+  const box=document.getElementById('reply-'+name)?.querySelector('.construction-box');
+  const composer=document.getElementById('composer-'+name);
+  if(!box) return;
+  const now=new Date(data.timestamp).toLocaleDateString('es-VE',{day:'2-digit',month:'long',year:'numeric'});
+  let extra='';
+  if(data.link) extra+=`<div style="margin-top:8px;font-size:11px"><i class="fas fa-link" style="margin-right:4px;color:var(--gold)"></i><a href="${data.link}" target="_blank" style="color:var(--gold);word-break:break-all">${data.link}</a></div>`;
+  box.innerHTML=`
+    <div style="font-size:13px;color:#e2e8f0;line-height:1.75">${data.text.replace(/\n/g,'<br>')}</div>
+    ${extra}
+    <div style="font-size:10px;color:var(--muted);margin-top:8px;font-family:'Rajdhani';letter-spacing:1px">✅ Publicado el ${now}</div>`;
+  if(composer) composer.style.display='none';
+  updateStats();
+}
+
+// ── RENDERIZAR COMENTARIO PÚBLICO ──
+function renderComentario(data){
+  const container=document.getElementById('public-comments');
+  const initials=data.name.split(' ').map(w=>w[0]).join('').substring(0,2).toUpperCase();
+  const now=new Date(data.timestamp).toLocaleDateString('es-VE',{day:'2-digit',month:'long',year:'numeric'});
+  let extra='';
+  if(data.link) extra+=`<div style="margin-top:6px;font-size:11px"><i class="fas fa-link" style="margin-right:4px;color:var(--gold)"></i><a href="${data.link}" target="_blank" style="color:var(--gold);word-break:break-all">${data.link}</a></div>`;
+  const div=document.createElement('div');
+  div.className='reply';div.style.marginBottom='12px';
+  div.innerHTML=`
+    <div class="reply-header">
+      <div style="width:38px;height:38px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:'Orbitron',monospace;font-size:12px;font-weight:700;color:#fff;flex-shrink:0">${initials}</div>
+      <div class="reply-meta">
+        <div class="reply-name">${data.name}</div>
+        <div class="reply-date">${now}</div>
+      </div>
+    </div>
+    <div class="reply-text" style="margin-top:8px">${data.text.replace(/\n/g,'<br>')}${extra}</div>`;
+  container.appendChild(div);
+}
+
+// ── PUBLICAR APORTE INTEGRANTE ──
+window.publishReply=function(name){
+  const text=document.getElementById('text-'+name)?.value.trim();
+  const link=document.getElementById('link-'+name)?.value.trim()||'';
+  if(!text){alert('Por favor escribe tu reflexión antes de publicar.');return;}
+  const btn=document.querySelector(`#composer-${name} .btn-submit`);
+  if(btn){btn.textContent='Guardando...';btn.disabled=true;}
+  set(ref(db,`aportes/${name}`),{
+    text, link, timestamp: Date.now(),
+    name: MEMBER_NAMES[name]||name
+  }).then(()=>{
+    if(btn){btn.textContent='✅ Publicado';btn.style.background='var(--green)';}
+  }).catch(e=>{
+    alert('Error al guardar. Intenta de nuevo.');
+    if(btn){btn.textContent='PUBLICAR';btn.disabled=false;}
+  });
+}
+
+// ── PUBLICAR COMENTARIO PÚBLICO ──
+window.publishPublic=function(){
+  const name=document.getElementById('pub-name')?.value.trim();
+  const text=document.getElementById('pub-text')?.value.trim();
+  const link=document.getElementById('pub-link')?.value.trim()||'';
+  if(!name||!text){alert('Por favor ingresa tu nombre y comentario.');return;}
+  const btn=document.querySelector('#pub-send');
+  if(btn){btn.textContent='Guardando...';btn.disabled=true;}
+  push(ref(db,'comentarios'),{
+    name, text, link, timestamp: Date.now()
+  }).then(()=>{
+    document.getElementById('pub-name').value='';
+    document.getElementById('pub-text').value='';
+    document.getElementById('pub-link').value='';
+    if(btn){btn.textContent='PUBLICAR COMENTARIO';btn.disabled=false;}
+  }).catch(()=>{
+    alert('Error al guardar. Intenta de nuevo.');
+    if(btn){btn.textContent='PUBLICAR COMENTARIO';btn.disabled=false;}
+  });
+}
+
+// ── TOGGLE COMPOSER ──
+window.toggleComposer=function(name){
+  const c=document.getElementById('composer-'+name);
+  if(!c)return;
+  c.style.display=c.style.display==='block'?'none':'block';
+}
+
+// ── TOGGLE MODO LECTURA ──
+let readMode=false;
+window.toggleMode=function(){
+  readMode=!readMode;
+  const btn=document.getElementById('toggle-btn');
+  const editables=document.querySelectorAll('.construction-box,.reply-composer,.obs-input,.evidence-card');
+  if(readMode){
+    btn.textContent='✏️ MODO EDICIÓN';
+    btn.style.background='rgba(34,197,94,0.15)';
+    btn.style.borderColor='rgba(34,197,94,0.4)';
+    btn.style.color='var(--green)';
+    editables.forEach(e=>{e.style.opacity='0.3';e.style.pointerEvents='none';});
+    document.querySelectorAll('.reply-actions').forEach(a=>a.style.display='none');
+  } else {
+    btn.textContent='👁 MODO LECTURA';
+    btn.style.background='rgba(217,43,43,0.15)';
+    btn.style.borderColor='rgba(217,43,43,0.4)';
+    btn.style.color='var(--red)';
+    editables.forEach(e=>{e.style.opacity='';e.style.pointerEvents='';});
+    document.querySelectorAll('.reply-actions').forEach(a=>a.style.display='');
+  }
+}
+
+// ── ESTADÍSTICAS ──
+function updateStats(){
+  let count=0;
+  MEMBERS.forEach(n=>{
+    const box=document.getElementById('reply-'+n)?.querySelector('.construction-box');
+    if(box&&box.querySelector('[style*="Publicado"]')) count++;
+  });
+  document.querySelectorAll('.stat-val').forEach((v,i)=>{
+    if(i===3) v.textContent=(count+1)+'/5';
+  });
+}
+</script>
+</body>
+</html>
