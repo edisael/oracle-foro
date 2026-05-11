@@ -1196,6 +1196,65 @@ function updateStats(){
     if(i===3) v.textContent=(count+1)+'/5';
   });
 }
+  // Múltiples respuestas anidadas
+function addNestedReply(parentId, author, text) {
+    const parentDiv = document.getElementById(parentId);
+    const repliesContainer = parentDiv.querySelector('.nested-replies');
+    if (!repliesContainer) return;
+    
+    const replyDiv = document.createElement('div');
+    replyDiv.className = 'reply-l2';
+    const date = new Date().toLocaleDateString('es-VE');
+    const initials = author.split(' ').map(w=>w[0]).join('').substring(0,2).toUpperCase();
+    
+    replyDiv.innerHTML = `
+        <div class="reply-header">
+            <div style="width:32px;height:32px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff">${initials}</div>
+            <div class="reply-meta">
+                <div class="reply-name">${escapeHtml(author)}</div>
+                <div class="reply-date">${date}</div>
+            </div>
+        </div>
+        <div class="reply-text">${escapeHtml(text).replace(/\n/g,'<br>')}</div>
+        <div class="reply-actions">
+            <button class="btn-reply" onclick="showReplyForm('${replyDiv.id}')">Responder</button>
+            <button class="btn-like" onclick="this.innerHTML='<i class=\'fas fa-thumbs-up\'></i> Útil'">Útil</button>
+        </div>
+        <div id="form-${replyDiv.id}" style="display:none" class="reply-composer">
+            <input type="text" id="author-${replyDiv.id}" placeholder="Tu nombre" style="width:100%;margin-bottom:8px;padding:8px;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;color:var(--text)">
+            <textarea id="text-${replyDiv.id}" class="composer-input" placeholder="Escribe tu respuesta..."></textarea>
+            <div class="composer-actions"><button class="btn-submit" onclick="submitNestedReply('${replyDiv.id}', '${parentId}')">Publicar</button></div>
+        </div>
+        <div class="nested-replies" style="margin-left:1rem;margin-top:12px"></div>
+    `;
+    replyDiv.id = 'reply-' + Date.now();
+    repliesContainer.appendChild(replyDiv);
+}
+
+function showReplyForm(replyDivId) {
+    const form = document.getElementById('form-' + replyDivId);
+    if (form) form.style.display = form.style.display === 'block' ? 'none' : 'block';
+}
+
+function submitNestedReply(replyDivId, parentId) {
+    const author = document.getElementById('author-' + replyDivId)?.value.trim();
+    const text = document.getElementById('text-' + replyDivId)?.value.trim();
+    if (!author || !text) { alert('Completa nombre y respuesta'); return; }
+    addNestedReply(parentId, author, text);
+    document.getElementById('author-' + replyDivId).value = '';
+    document.getElementById('text-' + replyDivId).value = '';
+    document.getElementById('form-' + replyDivId).style.display = 'none';
+}
+
+function escapeHtml(str) {
+    if(!str) return '';
+    return str.replace(/[&<>]/g, function(m) {
+        if(m === '&') return '&amp;';
+        if(m === '<') return '&lt;';
+        if(m === '>') return '&gt;';
+        return m;
+    });
+}
 </script>
 </body>
 </html>
