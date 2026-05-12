@@ -1185,7 +1185,15 @@ window.publishReply=function(name){
     text, link, timestamp: Date.now(),
     name: MEMBER_NAMES[name]||name
   }).then(()=>{
-    if(btn){btn.textContent='✅ Publicado';btn.style.background='var(--green)';}
+    if(btn){
+      btn.textContent='✅ Publicado';
+      btn.style.background='var(--green)';
+      btn.disabled=false;
+      setTimeout(()=>{
+        btn.textContent='PUBLICAR';
+        btn.style.background='';
+      },2000);
+    }
   }).catch(e=>{
     alert('Error al guardar. Intenta de nuevo.');
     if(btn){btn.textContent='PUBLICAR';btn.disabled=false;}
