@@ -1030,7 +1030,7 @@ function renderPost(postId, data, type) {
   const container = document.getElementById(isTeam ? 'team-posts-container' : 'public-comments');
 
   let existing = document.getElementById(`post-${postId}`);
-  if (existing) existing.remove();
+  
 
   const member = TEAM_MEMBERS[data.author];
   const isAuthor = data.author === userName;
