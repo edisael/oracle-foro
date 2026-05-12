@@ -12,333 +12,171 @@
   --bg:#0a0a0a;--bg2:#111111;--card:#1a1a1a;--border:#2a2a2a;
   --red:#d92b2b;--orange:#cc5500;--gold:#F9A825;--teal:#00FFE7;
   --text:#e2e8f0;--muted:#64748b;--green:#22c55e;--yellow:#f59e0b;
+  --blue:#3b82f6;--purple:#a855f7;
 }
 html{scroll-behavior:smooth;}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
-
-/* ── SCROLLBAR ── */
 ::-webkit-scrollbar{width:6px;}
 ::-webkit-scrollbar-track{background:var(--bg2);}
 ::-webkit-scrollbar-thumb{background:var(--red);border-radius:3px;}
 
-/* ══════════════════════════════
-   1. HEADER
-══════════════════════════════ */
-#header{
-  position:sticky;top:0;z-index:100;
-  background:rgba(10,10,10,0.95);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--border);
-  padding:0 32px;
-}
-.header-inner{
-  max-width:1200px;margin:0 auto;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:14px 0;gap:16px;flex-wrap:wrap;
-}
-.forum-logo{
-  font-family:'Orbitron',monospace;
-  font-size:clamp(14px,2vw,20px);
-  font-weight:900;color:#fff;
-  letter-spacing:2px;
-}
+/* HEADER */
+#header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 32px;}
+.header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:16px;flex-wrap:wrap;}
+.forum-logo{font-family:'Orbitron',monospace;font-size:clamp(14px,2vw,20px);font-weight:900;color:#fff;letter-spacing:2px;}
 .forum-logo span{color:var(--red);}
 .header-badges{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
-.badge-status{
-  display:inline-flex;align-items:center;gap:6px;
-  background:rgba(217,43,43,0.12);border:1px solid rgba(217,43,43,0.4);
-  border-radius:20px;padding:5px 14px;
-  font-family:'Rajdhani';font-size:11px;font-weight:700;
-  letter-spacing:2px;color:var(--red);
-}
-.badge-modules{
-  display:inline-flex;align-items:center;gap:6px;
-  background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);
-  border-radius:20px;padding:5px 14px;
-  font-family:'Rajdhani';font-size:11px;font-weight:700;
-  letter-spacing:2px;color:var(--green);
-}
-.badge-count{
-  background:rgba(249,168,37,0.1);border:1px solid rgba(249,168,37,0.3);
-  border-radius:20px;padding:5px 14px;
-  font-family:'Rajdhani';font-size:11px;font-weight:700;
-  letter-spacing:2px;color:var(--gold);
-}
+.badge-status{display:inline-flex;align-items:center;gap:6px;background:rgba(217,43,43,0.12);border:1px solid rgba(217,43,43,0.4);border-radius:20px;padding:5px 14px;font-family:'Rajdhani';font-size:11px;font-weight:700;letter-spacing:2px;color:var(--red);}
+.badge-modules{display:inline-flex;align-items:center;gap:6px;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);border-radius:20px;padding:5px 14px;font-family:'Rajdhani';font-size:11px;font-weight:700;letter-spacing:2px;color:var(--green);}
+.badge-count{background:rgba(249,168,37,0.1);border:1px solid rgba(249,168,37,0.3);border-radius:20px;padding:5px 14px;font-family:'Rajdhani';font-size:11px;font-weight:700;letter-spacing:2px;color:var(--gold);}
+.header-btn{background:rgba(217,43,43,0.15);border:1px solid rgba(217,43,43,0.4);border-radius:20px;padding:5px 14px;font-family:'Rajdhani';font-size:11px;font-weight:700;letter-spacing:2px;color:var(--red);cursor:pointer;transition:0.2s;}
+.header-btn:hover{background:rgba(217,43,43,0.3);}
 
-/* ══════════════════════════════
-   MAIN LAYOUT
-══════════════════════════════ */
+/* MAIN */
 .main-wrap{max-width:1200px;margin:0 auto;padding:32px 24px;display:grid;grid-template-columns:1fr 300px;gap:28px;}
-@media(max-width:900px){.main-wrap{grid-template-columns:1fr;}}
+@media(max-width:900px){.main-wrap{grid-template-columns:1fr;padding:16px;}}
 
-/* ══════════════════════════════
-   2. PERFIL + HILO PRINCIPAL
-══════════════════════════════ */
-.thread-card{
-  background:var(--card);border:1px solid var(--border);
-  border-radius:16px;overflow:hidden;margin-bottom:20px;
-}
-.thread-header{
-  background:linear-gradient(135deg,rgba(217,43,43,0.12),rgba(204,85,0,0.06));
-  border-bottom:1px solid var(--border);
-  padding:24px 28px;display:flex;gap:18px;align-items:flex-start;
-}
-.avatar{
-  width:52px;height:52px;border-radius:50%;
-  object-fit:cover;border:2px solid var(--red);
-  box-shadow:0 0 16px rgba(217,43,43,0.4);
-  flex-shrink:0;
-}
+/* THREAD */
+.thread-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:20px;}
+.thread-header{background:linear-gradient(135deg,rgba(217,43,43,0.12),rgba(204,85,0,0.06));border-bottom:1px solid var(--border);padding:24px 28px;display:flex;gap:18px;align-items:flex-start;}
+.avatar{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid var(--red);box-shadow:0 0 16px rgba(217,43,43,0.4);flex-shrink:0;}
 .avatar-sm{width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid var(--red);flex-shrink:0;}
 .avatar-xs{width:30px;height:30px;border-radius:50%;object-fit:cover;border:1px solid var(--border);flex-shrink:0;}
-.poster-info{}
 .poster-name{font-family:'Orbitron',monospace;font-size:14px;font-weight:700;color:#fff;margin-bottom:3px;}
 .poster-role{font-size:11px;color:var(--orange);letter-spacing:1px;font-family:'Rajdhani';font-weight:600;}
 .poster-date{font-size:10px;color:var(--muted);margin-top:4px;}
 .thread-body{padding:24px 28px;}
-.thread-title{
-  font-family:'Orbitron',monospace;font-size:clamp(16px,2.2vw,22px);
-  font-weight:900;color:#fff;margin-bottom:6px;
-  background:linear-gradient(135deg,#fff,var(--red));
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-}
+.thread-title{font-family:'Orbitron',monospace;font-size:clamp(16px,2.2vw,22px);font-weight:900;color:#fff;margin-bottom:6px;background:linear-gradient(135deg,#fff,var(--red));-webkit-background-clip:text;background-clip:text;color:transparent;}
 .thread-subtitle{font-size:12px;color:var(--muted);letter-spacing:2px;font-family:'Rajdhani';margin-bottom:20px;}
 .divider{height:1px;background:linear-gradient(90deg,var(--red),transparent);margin:20px 0;}
 .body-text{font-size:13px;color:#94a3b8;line-height:1.75;}
 .body-text strong{color:#fff;}
 .body-text p{margin-bottom:12px;}
 
-/* PRESENTATION BUTTON */
-.btn-presentation{
-  display:inline-flex;align-items:center;gap:10px;
-  background:linear-gradient(135deg,var(--red),var(--orange));
-  border:none;border-radius:30px;padding:12px 28px;
-  font-family:'Orbitron',monospace;font-size:11px;font-weight:700;
-  letter-spacing:2px;color:#fff;cursor:pointer;
-  box-shadow:0 0 30px rgba(217,43,43,0.4);
-  transition:all 0.3s;text-decoration:none;margin-top:16px;
-}
+.btn-presentation{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--red),var(--orange));border:none;border-radius:30px;padding:12px 28px;font-family:'Orbitron',monospace;font-size:11px;font-weight:700;letter-spacing:2px;color:#fff;cursor:pointer;box-shadow:0 0 30px rgba(217,43,43,0.4);transition:all 0.3s;text-decoration:none;margin-top:16px;}
 .btn-presentation:hover{transform:translateY(-3px);box-shadow:0 0 50px rgba(217,43,43,0.6);}
 
-/* ══════════════════════════════
-   3. MÓDULOS ORACLE
-══════════════════════════════ */
+/* MODULES */
 .modules-section{margin-top:8px;}
-.section-title{
-  font-family:'Orbitron',monospace;font-size:13px;font-weight:700;
-  color:var(--red);letter-spacing:3px;text-transform:uppercase;
-  margin-bottom:16px;display:flex;align-items:center;gap:10px;
-}
+.section-title{font-family:'Orbitron',monospace;font-size:13px;font-weight:700;color:var(--red);letter-spacing:3px;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
 .section-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--red),transparent);}
-
-.module-card{
-  background:rgba(26,26,26,0.8);border:1px solid var(--border);
-  border-radius:12px;padding:18px 20px;margin-bottom:12px;
-  transition:all 0.3s;
-}
+.module-card{background:rgba(26,26,26,0.8);border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin-bottom:12px;transition:all 0.3s;}
 .module-card:hover{border-color:rgba(217,43,43,0.4);transform:translateX(4px);}
 .module-header{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
-.module-name{
-  font-family:'Orbitron',monospace;font-size:13px;font-weight:700;color:#fff;
-}
+.module-name{font-family:'Orbitron',monospace;font-size:13px;font-weight:700;color:#fff;}
 .module-fullname{font-size:11px;color:var(--muted);font-family:'Rajdhani';letter-spacing:1px;}
 .status-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
 .status-green{background:var(--green);box-shadow:0 0 8px var(--green);}
 .status-yellow{background:var(--yellow);box-shadow:0 0 8px var(--yellow);}
 .status-red{background:#ef4444;box-shadow:0 0 8px #ef4444;}
 .status-label{font-size:10px;font-family:'Rajdhani';font-weight:700;letter-spacing:1px;}
-
-.asiento-box{
-  background:rgba(0,0,0,0.4);border:1px solid rgba(217,43,43,0.15);
-  border-radius:8px;padding:12px 16px;margin:10px 0;
-  font-family:'Courier New',monospace;font-size:11px;
-}
+.asiento-box{background:rgba(0,0,0,0.4);border:1px solid rgba(217,43,43,0.15);border-radius:8px;padding:12px 16px;margin:10px 0;font-family:'Courier New',monospace;font-size:11px;}
 .asiento-row{display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
 .asiento-row:last-child{border-bottom:none;}
 .asiento-cuenta{color:#94a3b8;}
 .asiento-db{color:var(--teal);font-weight:700;}
 .asiento-cr{color:var(--gold);font-weight:700;}
-
-.trace-flow{
-  display:flex;align-items:center;gap:8px;margin:10px 0;
-  font-family:'Rajdhani';font-size:10px;letter-spacing:1px;
-}
+.trace-flow{display:flex;align-items:center;gap:8px;margin:10px 0;font-family:'Rajdhani';font-size:10px;letter-spacing:1px;flex-wrap:wrap;}
 .trace-step{background:rgba(217,43,43,0.1);border:1px solid rgba(217,43,43,0.3);border-radius:20px;padding:3px 10px;color:var(--red);}
 .trace-arrow{color:var(--muted);font-size:12px;}
 
-.obs-input{
-  width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);
-  border-radius:8px;padding:10px 14px;color:var(--text);font-family:'DM Sans';
-  font-size:12px;resize:none;margin-top:8px;transition:border-color 0.2s;
-  min-height:60px;
-}
-.obs-input:focus{outline:none;border-color:rgba(217,43,43,0.5);}
-.obs-input::placeholder{color:var(--muted);}
-.obs-label{font-size:10px;color:var(--muted);font-family:'Rajdhani';letter-spacing:1px;margin-top:8px;}
-
-/* ══════════════════════════════
-   4. RESPUESTAS ANIDADAS
-══════════════════════════════ */
+/* REPLIES */
 .replies-section{margin-top:8px;}
-.reply{
-  background:var(--card);border:1px solid var(--border);
-  border-radius:12px;padding:18px 20px;margin-bottom:12px;
-}
-.reply-l2{
-  margin-left:2rem;background:rgba(20,20,20,0.8);
-  border:1px solid rgba(42,42,42,0.8);
-  border-radius:10px;padding:14px 18px;margin-bottom:10px;
-}
-.reply-l3{
-  margin-left:4rem;background:rgba(15,15,15,0.9);
-  border:1px solid rgba(42,42,42,0.6);
-  border-radius:8px;padding:12px 16px;margin-bottom:8px;
-}
+.reply{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin-bottom:12px;transition:all 0.3s;}
+.reply:hover{border-color:rgba(217,43,43,0.3);}
 .reply-header{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
-.reply-meta{}
-.reply-name{font-size:13px;font-weight:700;color:#fff;}
+.reply-meta{flex:1;min-width:0;}
+.reply-name{font-size:13px;font-weight:700;color:#fff;display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
 .reply-role{font-size:10px;color:var(--orange);font-family:'Rajdhani';letter-spacing:1px;}
 .reply-date{font-size:10px;color:var(--muted);}
-.reply-text{font-size:12px;color:#94a3b8;line-height:1.7;}
+.reply-text{font-size:12px;color:#94a3b8;line-height:1.7;margin-top:8px;}
 .reply-text strong{color:#fff;}
-.reply-actions{display:flex;gap:10px;margin-top:12px;}
-.btn-reply{
-  background:none;border:1px solid var(--border);border-radius:20px;
-  padding:4px 14px;font-size:11px;color:var(--muted);cursor:pointer;
-  font-family:'Rajdhani';letter-spacing:1px;transition:all 0.2s;
-}
+.reply-text p{margin-bottom:8px;}
+.reply-text img{max-width:100%;border-radius:8px;margin:8px 0;border:1px solid var(--border);}
+.reply-text a{color:var(--gold);word-break:break-all;}
+.reply-text a:hover{text-decoration:underline;}
+.reply-actions{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;}
+.btn-reply{background:none;border:1px solid var(--border);border-radius:20px;padding:4px 14px;font-size:11px;color:var(--muted);cursor:pointer;font-family:'Rajdhani';letter-spacing:1px;transition:all 0.2s;}
 .btn-reply:hover{border-color:var(--red);color:var(--red);}
-.btn-like{
-  background:none;border:1px solid var(--border);border-radius:20px;
-  padding:4px 14px;font-size:11px;color:var(--muted);cursor:pointer;
-  font-family:'Rajdhani';letter-spacing:1px;transition:all 0.2s;
-  display:flex;align-items:center;gap:5px;
-}
+.btn-like{background:none;border:1px solid var(--border);border-radius:20px;padding:4px 14px;font-size:11px;color:var(--muted);cursor:pointer;font-family:'Rajdhani';letter-spacing:1px;transition:all 0.2s;display:flex;align-items:center;gap:5px;}
 .btn-like:hover{border-color:var(--gold);color:var(--gold);}
+.btn-like.liked{border-color:var(--gold);color:var(--gold);background:rgba(249,168,37,0.1);}
+.btn-edit{background:none;border:1px solid var(--border);border-radius:20px;padding:4px 14px;font-size:11px;color:var(--blue);cursor:pointer;font-family:'Rajdhani';letter-spacing:1px;transition:all 0.2s;}
+.btn-edit:hover{border-color:var(--blue);background:rgba(59,130,246,0.1);}
+.btn-delete{background:none;border:1px solid var(--border);border-radius:20px;padding:4px 14px;font-size:11px;color:var(--red);cursor:pointer;font-family:'Rajdhani';letter-spacing:1px;transition:all 0.2s;}
+.btn-delete:hover{border-color:var(--red);background:rgba(217,43,43,0.1);}
 
-/* ESPACIO EN CONSTRUCCIÓN */
-.construction-box{
-  background:rgba(204,85,0,0.06);border:1px dashed rgba(204,85,0,0.3);
-  border-radius:10px;padding:18px 20px;
-}
-.construction-header{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
-.construction-label{font-size:11px;color:var(--orange);font-family:'Rajdhani';letter-spacing:2px;font-weight:700;}
-.construction-hint{font-size:11px;color:var(--muted);line-height:1.6;}
-.construction-hint ul{margin:8px 0 0 16px;}
-.construction-hint li{margin-bottom:4px;}
+.nested-replies{margin-left:1.5rem;margin-top:12px;padding-left:12px;border-left:2px solid rgba(217,43,43,0.2);}
+.reply-l2{background:rgba(20,20,20,0.8);border:1px solid rgba(42,42,42,0.8);border-radius:10px;padding:14px 18px;margin-bottom:10px;}
+.reply-l3{margin-left:1.5rem;background:rgba(15,15,15,0.9);border:1px solid rgba(42,42,42,0.6);border-radius:8px;padding:12px 16px;margin-bottom:8px;}
 
-/* REPLY COMPOSER */
-.reply-composer{
-  background:rgba(26,26,26,0.6);border:1px solid var(--border);
-  border-radius:10px;padding:14px 18px;margin-top:12px;
-}
-.composer-label{font-size:10px;color:var(--muted);font-family:'Rajdhani';letter-spacing:2px;margin-bottom:8px;}
-.composer-input{
-  width:100%;background:rgba(0,0,0,0.4);border:1px solid var(--border);
-  border-radius:8px;padding:10px 14px;color:var(--text);
-  font-family:'DM Sans';font-size:12px;resize:none;min-height:80px;
-  transition:border-color 0.2s;
-}
+/* COMPOSER */
+.composer-box{background:rgba(26,26,26,0.6);border:1px solid var(--border);border-radius:10px;padding:14px 18px;margin-top:12px;}
+.composer-label{font-size:10px;color:var(--muted);font-family:'Rajdhani';letter-spacing:2px;margin-bottom:8px;text-transform:uppercase;}
+.composer-input{width:100%;background:rgba(0,0,0,0.4);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-family:'DM Sans';font-size:12px;resize:vertical;min-height:80px;transition:border-color 0.2s;}
 .composer-input:focus{outline:none;border-color:rgba(217,43,43,0.5);}
 .composer-input::placeholder{color:var(--muted);}
-.composer-actions{display:flex;justify-content:flex-end;margin-top:8px;}
-.btn-submit{
-  background:linear-gradient(135deg,var(--red),var(--orange));
-  border:none;border-radius:20px;padding:7px 20px;
-  font-family:'Rajdhani';font-size:11px;font-weight:700;
-  letter-spacing:2px;color:#fff;cursor:pointer;transition:all 0.2s;
-}
+.composer-name{width:100%;background:rgba(0,0,0,0.4);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--text);font-family:'DM Sans';font-size:12px;margin-bottom:8px;transition:border-color 0.2s;}
+.composer-name:focus{outline:none;border-color:rgba(217,43,43,0.5);}
+.composer-actions{display:flex;justify-content:space-between;align-items:center;margin-top:10px;flex-wrap:wrap;gap:8px;}
+.btn-submit{background:linear-gradient(135deg,var(--red),var(--orange));border:none;border-radius:20px;padding:7px 20px;font-family:'Rajdhani';font-size:11px;font-weight:700;letter-spacing:2px;color:#fff;cursor:pointer;transition:all 0.2s;}
 .btn-submit:hover{transform:scale(1.05);box-shadow:0 0 20px rgba(217,43,43,0.4);}
+.btn-submit:disabled{opacity:0.5;cursor:not-allowed;transform:none;}
+.btn-cancel{background:none;border:1px solid var(--border);border-radius:20px;padding:7px 20px;font-family:'Rajdhani';font-size:11px;font-weight:700;letter-spacing:2px;color:var(--muted);cursor:pointer;transition:all 0.2s;}
+.btn-cancel:hover{border-color:var(--red);color:var(--red);}
 
-/* ══════════════════════════════
-   5. COMENTARIO CRUZADO
-══════════════════════════════ */
-.cross-comment{
-  background:linear-gradient(135deg,rgba(204,85,0,0.08),rgba(217,43,43,0.04));
-  border:1px solid rgba(204,85,0,0.3);border-radius:12px;
-  padding:20px 24px;margin-bottom:20px;
-}
-.cross-label{
-  font-family:'Orbitron',monospace;font-size:11px;font-weight:700;
-  color:var(--orange);letter-spacing:3px;margin-bottom:14px;
-  display:flex;align-items:center;gap:8px;
-}
+/* FILE UPLOAD */
+.file-upload-area{border:2px dashed var(--border);border-radius:10px;padding:16px;text-align:center;cursor:pointer;transition:all 0.3s;margin:8px 0;}
+.file-upload-area:hover{border-color:var(--red);background:rgba(217,43,43,0.05);}
+.file-upload-area.dragover{border-color:var(--gold);background:rgba(249,168,37,0.05);}
+.file-upload-area i{font-size:24px;color:var(--muted);margin-bottom:6px;}
+.file-upload-area p{font-size:11px;color:var(--muted);font-family:'Rajdhani';letter-spacing:1px;}
+.file-preview{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;}
+.file-preview-item{background:rgba(0,0,0,0.4);border:1px solid var(--border);border-radius:8px;padding:6px 10px;font-size:11px;color:var(--text);display:flex;align-items:center;gap:6px;}
+.file-preview-item img{max-width:60px;max-height:60px;border-radius:4px;object-fit:cover;}
+.file-preview-item .remove-file{color:var(--red);cursor:pointer;font-size:12px;margin-left:4px;}
+.file-preview-item .remove-file:hover{color:#ff4444;}
 
-/* ══════════════════════════════
-   6. CHECKLIST CIERRE
-══════════════════════════════ */
-.checklist-table{width:100%;border-collapse:collapse;margin-top:10px;}
-.checklist-table th{
-  padding:10px 14px;text-align:left;
-  font-family:'Rajdhani';font-size:10px;font-weight:700;
-  letter-spacing:2px;color:var(--gold);
-  background:rgba(217,43,43,0.1);border-bottom:1px solid var(--border);
-}
-.checklist-table td{
-  padding:9px 14px;font-size:11px;color:#94a3b8;
-  border-bottom:1px solid rgba(42,42,42,0.6);vertical-align:middle;
-}
-.checklist-table tr:hover td{background:rgba(217,43,43,0.04);}
-.chk{width:16px;height:16px;accent-color:var(--red);cursor:pointer;}
-
-/* ══════════════════════════════
-   7. EVIDENCIAS
-══════════════════════════════ */
-.evidence-card{
-  background:rgba(26,26,26,0.6);border:1px dashed var(--border);
-  border-radius:10px;padding:16px 18px;margin-bottom:10px;
-}
+/* EVIDENCE */
+.evidence-card{background:rgba(26,26,26,0.6);border:1px dashed var(--border);border-radius:10px;padding:16px 18px;margin-bottom:10px;}
 .evidence-name{font-size:12px;font-weight:700;color:#fff;margin-bottom:4px;}
 .evidence-role{font-size:10px;color:var(--orange);font-family:'Rajdhani';letter-spacing:1px;margin-bottom:10px;}
-.evidence-upload{
-  display:flex;align-items:center;gap:8px;
-  background:rgba(0,0,0,0.3);border:1px solid var(--border);
-  border-radius:8px;padding:8px 14px;cursor:pointer;
-  font-size:11px;color:var(--muted);transition:0.2s;margin-bottom:8px;
-}
+.evidence-upload{display:flex;align-items:center;gap:8px;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:8px 14px;cursor:pointer;font-size:11px;color:var(--muted);transition:0.2s;margin-bottom:8px;}
 .evidence-upload:hover{border-color:var(--red);color:var(--red);}
-.evidence-comment{
-  width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);
-  border-radius:8px;padding:8px 12px;color:var(--text);
-  font-family:'DM Sans';font-size:11px;resize:none;min-height:50px;
-}
+.evidence-comment{width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--text);font-family:'DM Sans';font-size:11px;resize:vertical;min-height:50px;}
 .evidence-comment:focus{outline:none;border-color:rgba(217,43,43,0.4);}
 .evidence-deadline{font-size:10px;color:var(--muted);font-family:'Rajdhani';letter-spacing:1px;margin-top:6px;}
 
-/* ══════════════════════════════
-   SIDEBAR
-══════════════════════════════ */
-.sidebar{}
-.sidebar-card{
-  background:var(--card);border:1px solid var(--border);
-  border-radius:12px;padding:18px 20px;margin-bottom:16px;
-}
-.sidebar-title{
-  font-family:'Orbitron',monospace;font-size:11px;font-weight:700;
-  color:var(--red);letter-spacing:2px;margin-bottom:14px;
-  padding-bottom:10px;border-bottom:1px solid var(--border);
-}
+/* CHECKLIST */
+.checklist-table{width:100%;border-collapse:collapse;margin-top:10px;}
+.checklist-table th{padding:10px 14px;text-align:left;font-family:'Rajdhani';font-size:10px;font-weight:700;letter-spacing:2px;color:var(--gold);background:rgba(217,43,43,0.1);border-bottom:1px solid var(--border);}
+.checklist-table td{padding:9px 14px;font-size:11px;color:#94a3b8;border-bottom:1px solid rgba(42,42,42,0.6);vertical-align:middle;}
+.checklist-table tr:hover td{background:rgba(217,43,43,0.04);}
+.chk{width:16px;height:16px;accent-color:var(--red);cursor:pointer;}
+
+/* Q&A */
+.qa-block{background:rgba(0,0,0,0.3);border:1px solid rgba(217,43,43,0.2);border-radius:10px;padding:14px 18px;margin-bottom:12px;}
+.qa-question{font-size:11px;font-weight:700;color:var(--red);font-family:'Rajdhani';letter-spacing:1px;margin-bottom:6px;}
+.qa-answer{font-size:12px;color:#94a3b8;line-height:1.65;}
+.qa-answer strong{color:#fff;}
+
+/* SIDEBAR */
+.sidebar-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin-bottom:16px;}
+.sidebar-title{font-family:'Orbitron',monospace;font-size:11px;font-weight:700;color:var(--red);letter-spacing:2px;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);}
 .team-member{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
-.tm-info{}
+.tm-info{flex:1;min-width:0;}
 .tm-name{font-size:12px;font-weight:700;color:#fff;}
 .tm-role{font-size:10px;color:var(--orange);font-family:'Rajdhani';letter-spacing:1px;}
 .tm-status{margin-left:auto;}
 .dot-online{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);}
 .dot-pending{width:8px;height:8px;border-radius:50%;background:var(--yellow);box-shadow:0 0 6px var(--yellow);}
-
-/* STATS */
 .stat-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(42,42,42,0.5);}
 .stat-row:last-child{border-bottom:none;}
 .stat-label{font-size:11px;color:var(--muted);}
 .stat-val{font-family:'Orbitron',monospace;font-size:12px;font-weight:700;color:var(--red);}
 
-/* ══════════════════════════════
-   8. FOOTER
-══════════════════════════════ */
-#footer{
-  border-top:1px solid var(--border);
-  background:var(--bg2);padding:32px 24px;margin-top:40px;
-}
+/* FOOTER */
+#footer{border-top:1px solid var(--border);background:var(--bg2);padding:32px 24px;margin-top:40px;}
 .footer-inner{max-width:1200px;margin:0 auto;}
 .timeline{display:flex;gap:0;margin-bottom:28px;flex-wrap:wrap;}
 .tl-item{flex:1;min-width:200px;position:relative;padding:0 20px 20px;}
@@ -355,13 +193,79 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .tag-gold{background:rgba(249,168,37,0.08);border-color:rgba(249,168,37,0.25);color:var(--gold);}
 .info-box{background:rgba(249,168,37,0.06);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:12px 16px;font-size:12px;color:#94a3b8;margin:12px 0;line-height:1.6;}
 .info-box strong{color:#fff;}
+
+/* LIGHT MODE */
+body.light-mode{--bg:#f8fafc;--bg2:#f1f5f9;--card:#ffffff;--border:#e2e8f0;--text:#0f172a;--muted:#64748b;}
+body.light-mode .thread-card,body.light-mode .reply,body.light-mode .sidebar-card,body.light-mode .module-card,body.light-mode .evidence-card,body.light-mode .composer-box,body.light-mode .reply-l2,body.light-mode .reply-l3{background:#ffffff;box-shadow:0 1px 3px rgba(0,0,0,0.1);}
+body.light-mode .body-text,body.light-mode .reply-text,body.light-mode .qa-answer,body.light-mode .tl-label{color:#475569;}
+body.light-mode .poster-name,body.light-mode .reply-name,body.light-mode .module-name,body.light-mode .evidence-name,body.light-mode .tm-name{color:#0f172a;}
+body.light-mode .asiento-box{background:#f8fafc;}
+body.light-mode .composer-input,body.light-mode .composer-name,body.light-mode .evidence-comment{background:#f8fafc;color:#0f172a;}
+body.light-mode .file-upload-area{background:#f8fafc;}
+body.light-mode .file-preview-item{background:#f8fafc;}
+body.light-mode #header{background:rgba(248,250,252,0.95);}
+body.light-mode .forum-logo{color:#0f172a;}
+body.light-mode .thread-title{background:linear-gradient(135deg,#0f172a,var(--red));-webkit-background-clip:text;background-clip:text;color:transparent;}
+
+/* MODAL */
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.8);z-index:1000;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+.modal-box{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px 32px;max-width:420px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,0.5);}
+.modal-title{font-family:'Orbitron',monospace;font-size:16px;font-weight:700;color:#fff;margin-bottom:8px;}
+body.light-mode .modal-title{color:#0f172a;}
+.modal-desc{font-size:12px;color:var(--muted);margin-bottom:20px;line-height:1.6;}
+.modal-input{width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-family:'DM Sans';font-size:13px;margin-bottom:12px;transition:border-color 0.2s;}
+.modal-input:focus{outline:none;border-color:var(--red);}
+body.light-mode .modal-input{background:#f8fafc;color:#0f172a;}
+.modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:16px;}
+
+/* TOAST */
+.toast-container{position:fixed;top:20px;right:20px;z-index:2000;display:flex;flex-direction:column;gap:8px;}
+.toast{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 18px;min-width:280px;display:flex;align-items:center;gap:10px;box-shadow:0 10px 30px rgba(0,0,0,0.3);animation:toastIn 0.3s ease;}
+.toast.success{border-color:var(--green);}
+.toast.error{border-color:var(--red);}
+.toast.info{border-color:var(--blue);}
+@keyframes toastIn{from{transform:translateX(100%);opacity:0;}to{transform:translateX(0);opacity:1;}}
+.toast-out{animation:toastOut 0.3s ease forwards;}
+@keyframes toastOut{from{transform:translateX(0);opacity:1;}to{transform:translateX(100%);opacity:0;}}
+
+/* SPINNER */
+.spinner{width:16px;height:16px;border:2px solid var(--border);border-top-color:var(--red);border-radius:50%;animation:spin 0.8s linear infinite;display:inline-block;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  .header-inner{padding:10px 16px;}
+  .main-wrap{padding:16px;}
+  .thread-body{padding:16px;}
+  .thread-header{padding:16px;gap:12px;}
+  .avatar{width:40px;height:40px;}
+  .nested-replies{margin-left:0.5rem;padding-left:8px;}
+  .timeline{flex-direction:column;}
+  .tl-item{min-width:auto;padding-bottom:16px;}
+  .modal-box{padding:20px;}
+}
 </style>
+<base target="_blank">
 </head>
 <body>
 
-<!-- ══════════════════════════════
-     1. HEADER
-══════════════════════════════ -->
+<!-- TOASTS -->
+<div class="toast-container" id="toast-container"></div>
+
+<!-- AUTH MODAL -->
+<div class="modal-overlay" id="auth-modal" style="display:none">
+  <div class="modal-box">
+    <div class="modal-title"><i class="fas fa-user-shield" style="margin-right:8px;color:var(--red)"></i>Identificación</div>
+    <div class="modal-desc">Ingresa tu nombre y apellido para participar en el foro. Los posts quedarán asociados a tu identidad y podrás editarlos o eliminarlos.</div>
+    <input type="text" class="modal-input" id="auth-name" placeholder="Ej: Edgardo Moya" maxlength="50">
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeAuthModal()">Cancelar</button>
+      <button class="btn-submit" onclick="saveUserName()">Entrar al Foro</button>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
 <div id="header">
   <div class="header-inner">
     <div class="forum-logo">ORACLE <span>FORUM</span> – CIERRE CONTABLE 2026</div>
@@ -369,23 +273,20 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
       <div class="badge-status">📅 Exposición pendiente · MAY-26</div>
       <div class="badge-modules">✅ 6/6 Módulos analizados</div>
       <div class="badge-count">⏱ ~8 min de lectura</div>
-      <button onclick="toggleMode()" id="toggle-btn" style="background:rgba(217,43,43,0.15);border:1px solid rgba(217,43,43,0.4);border-radius:20px;padding:5px 14px;font-family:'Rajdhani';font-size:11px;font-weight:700;letter-spacing:2px;color:var(--red);cursor:pointer;transition:0.2s">👁 MODO LECTURA</button>
+      <button class="header-btn" onclick="toggleTheme()" title="Cambiar tema"><i class="fas fa-sun"></i> TEMA</button>
+      <button class="header-btn" onclick="toggleReadMode()" id="read-mode-btn"><i class="fas fa-eye"></i> LECTURA</button>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════
-     MAIN
-══════════════════════════════ -->
+<!-- MAIN -->
 <div class="main-wrap">
 <div class="main-col">
 
-<!-- ══════════════════════════════
-     2. HILO PRINCIPAL
-══════════════════════════════ -->
+<!-- HILO PRINCIPAL -->
 <div class="thread-card">
   <div class="thread-header">
-    <img class="avatar" src="https://i.imgur.com/RtssnS9.jpeg" onerror="this.src='https://ui-avatars.com/api/?name=EM&background=d92b2b&color=fff&size=52'" alt="Edgardo Moya">
+    <img class="avatar" src="https://i.imgur.com/RtssnS9.jpeg" onerror="this.src='https://ui-avatars.com/api/?name=Edgardo+Moya&background=d92b2b&color=fff&size=52'" alt="Edgardo Moya">
     <div class="poster-info">
       <div class="poster-name">Edgardo Moya</div>
       <div class="poster-role">Coordinador del Equipo · Oracle Retail / EBS · Sistemas de Información</div>
@@ -395,17 +296,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   <div class="thread-body">
     <div class="thread-title">Oracle Retail en Farmatodo Venezuela</div>
     <div class="thread-subtitle">EVALUACIÓN DE UN SISTEMA DE INFORMACIÓN · NIVEL 5 · GRUPO ORACLE</div>
-
     <div class="body-text">
       <p>Estimada profesora y compañeros. Nuestro equipo presenta el análisis de <strong>Oracle Retail Suite + Oracle E-Business Suite (EBS)</strong>, el sistema de información que Farmatodo Venezuela implementó en 2019 como plataforma tecnológica central para estandarizar sus operaciones en más de 300 tiendas en Venezuela y Colombia.</p>
-
       <p>La elección no fue aleatoria: uno de los miembros de nuestro equipo, <strong>Kelis Ochoa</strong>, opera Oracle Xstore POS diariamente en Farmatodo, lo que nos permitió ir más allá de la investigación teórica y presentar evidencia de primera mano sobre cómo este sistema funciona en el contexto real venezolano.</p>
-
       <p>Oracle no es solo un software — es el <strong>sistema nervioso</strong> de Farmatodo. Cada venta en caja se convierte automáticamente en un asiento contable en EBS, sin intervención humana, sin errores de transcripción. Cuando Venezuela ejecutó la reconversión monetaria al bolívar digital, Farmatodo procesó el cambio en pocas horas sin cerrar ninguna tienda. Eso es lo que diferencia a un sistema de información estratégico de un simple programa administrativo.</p>
-
       <p>A continuación presentamos el análisis completo de módulos, el proceso contable automatizado, las fortalezas y debilidades del sistema en el contexto venezolano, y nuestra recomendación final como equipo consultor.</p>
     </div>
-
     <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:16px;">
       <span class="tag">ERP</span><span class="tag">SIT</span><span class="tag">SIG</span>
       <span class="tag tag-teal">Oracle Retail 19+</span>
@@ -413,20 +309,14 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
       <span class="tag tag-gold">Farmatodo Venezuela</span>
       <span class="tag tag-gold">+300 Tiendas</span>
     </div>
-
-    <a href="#" class="btn-presentation">
-      <i class="fas fa-presentation-screen"></i>
-      VER PRESENTACIÓN COMPLETA
-    </a>
+    <a href="#" class="btn-presentation"><i class="fas fa-presentation-screen"></i>VER PRESENTACIÓN COMPLETA</a>
     <span style="font-size:10px;color:var(--muted);margin-left:12px;font-family:'Rajdhani';letter-spacing:1px;">*(Agregar link de presentación aquí)*</span>
-
     <div class="divider"></div>
 
-    <!-- ══ 3. MÓDULOS ORACLE ══ -->
+    <!-- MÓDULOS ORACLE -->
     <div class="modules-section">
       <div class="section-title">Análisis de Módulos Oracle</div>
 
-      <!-- GL -->
       <div class="module-card">
         <div class="module-header">
           <div class="status-dot status-green"></div>
@@ -450,11 +340,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
           <span class="trace-step">Create Accounting</span><span class="trace-arrow">→</span>
           <span class="trace-step">GL Posted</span>
         </div>
-        <div class="obs-label">OBSERVACIONES DEL EQUIPO:</div>
-        <textarea class="obs-input" placeholder="Ej: El GL de Farmatodo consolida las 300 tiendas en tiempo real. El cierre mensual se ejecuta en horas vs días con sistemas anteriores..."></textarea>
       </div>
 
-      <!-- AP -->
       <div class="module-card">
         <div class="module-header">
           <div class="status-dot status-green"></div>
@@ -479,11 +366,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
           <span class="trace-step">Create Accounting</span><span class="trace-arrow">→</span>
           <span class="trace-step">GL Posted</span>
         </div>
-        <div class="obs-label">OBSERVACIONES DEL EQUIPO:</div>
-        <textarea class="obs-input" placeholder="Observaciones sobre el módulo AP en Farmatodo..."></textarea>
       </div>
 
-      <!-- AR -->
       <div class="module-card">
         <div class="module-header">
           <div class="status-dot status-green"></div>
@@ -506,11 +390,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
           <span class="trace-step">Create Accounting</span><span class="trace-arrow">→</span>
           <span class="trace-step">GL Posted</span>
         </div>
-        <div class="obs-label">OBSERVACIONES DEL EQUIPO:</div>
-        <textarea class="obs-input" placeholder="Observaciones sobre AR en Farmatodo..."></textarea>
       </div>
 
-      <!-- FA -->
       <div class="module-card">
         <div class="module-header">
           <div class="status-dot status-yellow"></div>
@@ -531,11 +412,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
           <span class="trace-step">Create Accounting</span><span class="trace-arrow">→</span>
           <span class="trace-step">GL Posted</span>
         </div>
-        <div class="obs-label">OBSERVACIONES DEL EQUIPO:</div>
-        <textarea class="obs-input" placeholder="Observaciones sobre FA en Farmatodo..."></textarea>
       </div>
 
-      <!-- IGTF -->
       <div class="module-card">
         <div class="module-header">
           <div class="status-dot status-green"></div>
@@ -558,11 +436,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
           <span class="trace-step">CM Journal</span><span class="trace-arrow">→</span>
           <span class="trace-step">GL Posted</span>
         </div>
-        <div class="obs-label">OBSERVACIONES DEL EQUIPO:</div>
-        <textarea class="obs-input" placeholder="Observaciones sobre IGTF y divisas en Farmatodo..."></textarea>
       </div>
 
-      <!-- PA -->
       <div class="module-card">
         <div class="module-header">
           <div class="status-dot status-green"></div>
@@ -584,280 +459,104 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
           <span class="trace-step">INV Update</span><span class="trace-arrow">→</span>
           <span class="trace-step">COGS GL</span>
         </div>
-        <div class="obs-label">OBSERVACIONES DEL EQUIPO:</div>
-        <textarea class="obs-input" placeholder="Observaciones sobre inventario y ReSA en Farmatodo..."></textarea>
       </div>
-
-    </div><!-- /modules -->
+    </div>
 
     <div class="divider"></div>
-
     <div class="info-box">
       <strong>🔑 Dato clave para la profesora:</strong> Cuando Venezuela ejecutó la reconversión monetaria al bolívar digital, Farmatodo actualizó todos los módulos Oracle en pocas horas sin interrumpir operaciones en ninguna de sus 300+ tiendas. Esto demuestra en la práctica lo que estudiamos en clase: un sistema de información robusto es la ventaja competitiva más poderosa de una organización.
     </div>
-
-  </div><!-- /thread-body -->
-</div><!-- /thread-card -->
-
-<!-- ══════════════════════════════
-     4. RESPUESTAS ANIDADAS
-══════════════════════════════ -->
-<div class="replies-section">
-  <div class="section-title">Aportes del Equipo</div>
-
-  <!-- EDGARDO -->
-  <div class="reply">
-    <div class="reply-header">
-      <img class="avatar-sm" src="https://i.imgur.com/RtssnS9.jpeg" onerror="this.src='https://ui-avatars.com/api/?name=EM&background=d92b2b&color=fff'" alt="Edgardo">
-      <div class="reply-meta">
-        <div class="reply-name">Edgardo Moya <span class="tag" style="margin-left:6px;font-size:9px">COORDINADOR</span></div>
-        <div class="reply-role">Reflexión personal · Mayo 2026</div>
-      </div>
-    </div>
-    <div class="reply-text">
-      Este análisis nos permite comprender cómo un ERP como Oracle trasciende la simple gestión de datos para convertirse en el sistema nervioso central de una organización. Lo que más llama la atención es que Farmatodo procesó la reconversión monetaria al bolívar digital en pocas horas sin detener ninguna tienda — algo impensable sin un sistema de información robusto. Oracle es el ejemplo perfecto de cómo un <strong>SIT, un SIG y un ERP</strong> pueden coexistir en una sola plataforma, convirtiendo cada transacción operativa en información estratégica para todos los niveles organizacionales. Esta investigación reafirma que el contador del siglo XXI no puede limitarse a los libros — debe entender los sistemas que generan esa información.
-    </div>
-    <div class="reply-actions">
-      <button class="btn-like" onclick="...">👍 Útil</button>
-    </div>
-    <div class="nested-replies" style="margin-left:1rem;margin-top:12px"></div>
   </div>
-
-  <!-- MARYORI -->
-  <div class="reply" id="reply-maryori">
-    <div class="reply-header">
-      <img class="avatar-sm" src="https://i.imgur.com/DtlPOdM.jpeg" onerror="this.src='https://ui-avatars.com/api/?name=MA&background=cc5500&color=fff'" alt="Maryori">
-      <div class="reply-meta">
-        <div class="reply-name">Maryori Azuaje <span class="tag tag-gold" style="margin-left:6px;font-size:9px">CUMPLIMIENTO</span></div>
-        <div class="reply-role">Reflexión personal · Mayo 2026</div>
-      </div>
-    </div>
-    <div class="construction-box">
-      <div class="construction-label">🔧 ESPACIO — MARYORI AZUAJE</div>
-      <div class="construction-hint" style="margin-top:8px">
-        Maryori, aquí publicas tu reflexión:<br>
-        <ul style="margin-top:6px">
-          <li>¿Qué vas a aprender de Oracle como sistema de información?</li>
-          <li>¿Qué es lo que más te llama la atención del sistema?</li>
-          <li>¿Cómo conectas Oracle con los contenidos vistos en clase?</li>
-        </ul>
-      </div>
-      <div id="composer-maryori" style="display:none;margin-top:12px">
-        <textarea class="composer-input" id="text-maryori" placeholder="Escribe tu reflexión aquí... Mínimo 5 líneas. Redacta como experta, no como técnica." style="min-height:100px"></textarea>
-        <div style="margin-top:8px">
-          <div class="composer-label">📎 ADJUNTAR ARCHIVO O IMAGEN</div>
-          <input type="file" id="file-maryori" accept="image/*,.pdf,.xlsx,.docx" style="margin:6px 0;font-size:11px;color:var(--muted)">
-        </div>
-        <div style="margin-top:8px">
-          <div class="composer-label">🔗 PEGAR LINK (Google Drive, Canva, YouTube...)</div>
-          <input type="url" id="link-maryori" placeholder="https://..." style="width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--text);font-size:11px;margin-top:4px">
-        </div>
-        <div class="composer-actions" style="margin-top:10px">
-          <button class="btn-submit" onclick="publishReply('maryori')"><i class="fas fa-paper-plane" style="margin-right:6px"></i>PUBLICAR</button>
-        </div>
-      </div>
-    </div>
-    <div class="reply" id="reply-maryori">
-     <div class="reply-actions">
-      <button class="btn-reply" onclick="toggleComposer('maryori')"><i class="fas fa-reply"></i> Responder</button>
-    </div>
-    <div class="nested-replies" style="margin-left:1rem;margin-top:12px"></div>
-  </div>
-  <!-- KELIS -->
-  <div class="reply" id="reply-kelis">
-    <div class="reply-header">
-      <img class="avatar-sm" src="https://i.imgur.com/jeckcVL.jpeg" onerror="this.src='https://ui-avatars.com/api/?name=KO&background=cc5500&color=fff'" alt="Kelis">
-      <div class="reply-meta">
-        <div class="reply-name">Kelis Ochoa <span class="tag tag-teal" style="margin-left:6px;font-size:9px">EXPOSITORA · USUARIA REAL</span></div>
-        <div class="reply-role">Reflexión personal · Mayo 2026</div>
-      </div>
-    </div>
-    <div class="construction-box">
-      <div class="construction-label">🔧 ESPACIO — KELIS OCHOA</div>
-      <div class="construction-hint" style="margin-top:8px">
-        Kelis, tú tienes el aporte más valioso — eres la única que usa Oracle en la vida real:<br>
-        <ul style="margin-top:6px">
-          <li>¿Qué procesos manejas directamente en Farmatodo con Oracle?</li>
-          <li>¿Qué descubres al investigar más allá de tu rol operativo?</li>
-          <li>¿Qué es lo que más te sorprende del sistema completo?</li>
-          <li>¿Qué mejorarías desde tu experiencia como usuaria?</li>
-        </ul>
-      </div>
-      <div id="composer-kelis" style="display:none;margin-top:12px">
-        <textarea class="composer-input" id="text-kelis" placeholder="Tu testimonio real vale más que cualquier investigación. Mínimo 5 líneas." style="min-height:100px"></textarea>
-        <div style="margin-top:8px">
-          <div class="composer-label">📎 ADJUNTAR ARCHIVO O IMAGEN</div>
-          <input type="file" id="file-kelis" accept="image/*,.pdf,.xlsx,.docx" style="margin:6px 0;font-size:11px;color:var(--muted)">
-        </div>
-        <div style="margin-top:8px">
-          <div class="composer-label">🔗 PEGAR LINK</div>
-          <input type="url" id="link-kelis" placeholder="https://..." style="width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--text);font-size:11px;margin-top:4px">
-        </div>
-        <div class="composer-actions" style="margin-top:10px">
-          <button class="btn-submit" onclick="publishReply('kelis')"><i class="fas fa-paper-plane" style="margin-right:6px"></i>PUBLICAR</button>
-        </div>
-      </div>
-    </div>
-     <!-- NAYROBY -->
-  <div class="reply" id="reply-nayroby">
-    <div class="reply-header">
-      <img class="avatar-sm" src="https://i.imgur.com/3YVY98r.jpeg" onerror="this.src='https://ui-avatars.com/api/?name=NF&background=cc5500&color=fff'" alt="Nayroby">
-      <div class="reply-meta">
-        <div class="reply-name">Nayroby Figueroa <span class="tag tag-gold" style="margin-left:6px;font-size:9px">INVESTIGADORA</span></div>
-        <div class="reply-role">Reflexión personal · Mayo 2026</div>
-      </div>
-    </div>
-    <div class="construction-box">
-      <div class="construction-label">🔧 ESPACIO — NAYROBY FIGUEROA</div>
-      <div class="construction-hint" style="margin-top:8px">
-        Nayroby, aquí publicas tu reflexión:<br>
-        <ul style="margin-top:6px">
-          <li>¿Qué descubres investigando Oracle?</li>
-          <li>¿Qué es lo que más te llama la atención?</li>
-          <li>¿Cómo conectas Oracle con los contenidos de Sistemas de Información?</li>
-          <li>¿Qué ventaja o desafío te parece más relevante para Venezuela?</li>
-        </ul>
-      </div>
-      <div id="composer-nayroby" style="display:none;margin-top:12px">
-        <textarea class="composer-input" id="text-nayroby" placeholder="Redacta como analista experta. Mínimo 5 líneas." style="min-height:100px"></textarea>
-        <div style="margin-top:8px">
-          <div class="composer-label">📎 ADJUNTAR ARCHIVO O IMAGEN</div>
-          <input type="file" id="file-nayroby" accept="image/*,.pdf,.xlsx,.docx" style="margin:6px 0;font-size:11px;color:var(--muted)">
-        </div>
-        <div style="margin-top:8px">
-          <div class="composer-label">🔗 PEGAR LINK</div>
-          <input type="url" id="link-nayroby" placeholder="https://..." style="width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--text);font-size:11px;margin-top:4px">
-        </div>
-        <div class="composer-actions" style="margin-top:10px">
-          <button class="btn-submit" onclick="publishReply('nayroby')"><i class="fas fa-paper-plane" style="margin-right:6px"></i>PUBLICAR</button>
-        </div>
-      </div>
-    </div>
-    <div class="reply" id="reply-maryori">
-  <div class="reply-header">...</div>
-  <div class="construction-box">
-    ...instrucciones...
-    <div id="composer-maryori" style="display:none">
-      ...textarea, file, link, botón publicar...
-    </div>
-  </div>
-  <div class="reply-actions">
-    <button class="btn-reply" onclick="toggleComposer('maryori')">Responder</button>
-  </div>
-  <div class="nested-replies" style="margin-left:1rem;margin-top:12px"></div>
 </div>
-    <div class="reply-actions">
-      <button class="btn-reply" onclick="toggleComposer('nayroby')"><i class="fas fa-reply"></i> Responder</button>
+
+<!-- APORTES DEL EQUIPO (DINÁMICO) -->
+<div class="replies-section" id="team-posts-section">
+  <div class="section-title">Aportes del Equipo</div>
+  <div id="team-posts-container"></div>
+
+  <div class="composer-box" id="team-composer">
+    <div class="composer-label">NUEVO APORTE DEL EQUIPO</div>
+    <input type="text" class="composer-name" id="team-author" placeholder="Tu nombre completo" maxlength="50">
+    <textarea class="composer-input" id="team-text" placeholder="Escribe tu reflexión, análisis o aporte al foro. Mínimo 5 líneas recomendado. Redacta como experta, no como técnica." style="min-height:100px"></textarea>
+
+    <div class="file-upload-area" id="team-dropzone" onclick="document.getElementById('team-file').click()">
+      <i class="fas fa-cloud-upload-alt"></i>
+      <p>Arrastra archivos aquí o haz clic para seleccionar<br><span style="font-size:10px;opacity:0.7">Máximo 10MB · Imágenes, PDF, Excel, Word, PowerPoint</span></p>
+      <input type="file" id="team-file" multiple accept="image/*,.pdf,.xlsx,.docx,.pptx" style="display:none" onchange="handleFiles(this, 'team')">
     </div>
-    <div class="nested-replies" style="margin-left:1rem;margin-top:12px"></div>
+    <div class="file-preview" id="team-preview"></div>
+
+    <input type="url" id="team-link" placeholder="🔗 Link externo (Google Drive, Canva, YouTube...)" style="width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--text);font-size:11px;margin-top:8px;">
+
+    <div class="composer-actions">
+      <span style="font-size:10px;color:var(--muted);font-family:'Rajdhani';">Se publicará con tu nombre · Editable después</span>
+      <div style="display:flex;gap:8px;">
+        <button class="btn-cancel" onclick="clearComposer('team')">Limpiar</button>
+        <button class="btn-submit" id="team-submit" onclick="publishPost('team')">
+          <i class="fas fa-paper-plane" style="margin-right:6px"></i>PUBLICAR APORTE
+        </button>
+      </div>
+    </div>
   </div>
+</div>
 
-  <!-- YOLIMAR -->
-  <div class="reply" id="reply-yolimar">
-    <div class="reply-header">
-      <img class="avatar-sm" src="https://i.imgur.com/ptagDNz.jpeg" onerror="this.src='https://ui-avatars.com/api/?name=YM&background=cc5500&color=fff'" alt="Yolimar">
-      <div class="reply-meta">
-        <div class="reply-name">Yolimar Marcano <span class="tag" style="margin-left:6px;font-size:9px">ESTRATEGA</span></div>
-        <div class="reply-role">Reflexión personal · Mayo 2026</div>
-      </div>
-    </div>
-    <div class="construction-box">
-      <div class="construction-label">🔧 ESPACIO — YOLIMAR MARCANO</div>
-      <div class="construction-hint" style="margin-top:8px">
-        Yolimar, aquí publicas tu reflexión:<br>
-        <ul style="margin-top:6px">
-          <li>¿Qué vas a aprender de Oracle como sistema de información?</li>
-          <li>¿Qué ventaja estratégica te parece más poderosa?</li>
-          <li>¿Lo recomendarías para empresas venezolanas? ¿Por qué sí o por qué no?</li>
-          <li>¿Cómo conectas esto con tu visión como futura contadora?</li>
-        </ul>
-      </div>
-      <div id="composer-yolimar" style="display:none;margin-top:12px">
-        <textarea class="composer-input" id="text-yolimar" placeholder="Tu perspectiva estratégica es clave para cerrar el foro. Mínimo 5 líneas." style="min-height:100px"></textarea>
-        <div style="margin-top:8px">
-          <div class="composer-label">📎 ADJUNTAR ARCHIVO O IMAGEN</div>
-          <input type="file" id="file-yolimar" accept="image/*,.pdf,.xlsx,.docx" style="margin:6px 0;font-size:11px;color:var(--muted)">
-        </div>
-        <div style="margin-top:8px">
-          <div class="composer-label">🔗 PEGAR LINK</div>
-          <input type="url" id="link-yolimar" placeholder="https://..." style="width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--text);font-size:11px;margin-top:4px">
-        </div>
-        <div class="composer-actions" style="margin-top:10px">
-          <button class="btn-submit" onclick="publishReply('yolimar')"><i class="fas fa-paper-plane" style="margin-right:6px"></i>PUBLICAR</button>
-        </div>
-      </div>
-    </div>
-        <div class="reply-actions">
-      <button class="btn-reply" onclick="toggleComposer('yolimar')"><i class="fas fa-reply"></i> Responder</button>
-    </div>
-    <div class="nested-replies" style="margin-left:1rem;margin-top:12px"></div>
-  </div>
-
-</div><!-- /replies -->
-
-<!-- ══════════════════════════════
-     PREGUNTAS ANTICIPADAS
-══════════════════════════════ -->
+<!-- PREGUNTAS ANTICIPADAS -->
 <div class="thread-card" style="margin-top:20px">
   <div class="thread-body">
     <div class="section-title">Preguntas Anticipadas — Debate Estratégico</div>
     <p style="font-size:11px;color:var(--muted);margin-bottom:16px">Preguntas que la profesora o los compañeros podrían plantear durante la exposición, con respuestas preparadas.</p>
-
-    <div style="display:flex;flex-direction:column;gap:12px">
-      <div style="background:rgba(0,0,0,0.3);border:1px solid rgba(217,43,43,0.2);border-radius:10px;padding:14px 18px">
-        <div style="font-size:11px;font-weight:700;color:var(--red);font-family:'Rajdhani';letter-spacing:1px;margin-bottom:6px">❓ ¿Por qué Oracle y no un sistema más accesible como Profit Plus o Mónica?</div>
-        <div style="font-size:12px;color:#94a3b8;line-height:1.65"><strong style="color:#fff">Respuesta:</strong> Oracle no es la solución para toda empresa — es la solución correcta para Farmatodo. Con +300 tiendas, condición de contribuyente especial y operación en dos países, Farmatodo necesita un sistema que escale, que opere offline durante los apagones venezolanos y que procese miles de transacciones simultáneas sin perder la trazabilidad fiscal. Profit Plus y Mónica son excelentes para PYMEs, pero no están diseñados para ese nivel de complejidad operativa.</div>
-      </div>
-      <div style="background:rgba(0,0,0,0.3);border:1px solid rgba(217,43,43,0.2);border-radius:10px;padding:14px 18px">
-        <div style="font-size:11px;font-weight:700;color:var(--red);font-family:'Rajdhani';letter-spacing:1px;margin-bottom:6px">❓ ¿Cómo garantiza Oracle el cumplimiento con el SENIAT en el contexto venezolano?</div>
-        <div style="font-size:12px;color:#94a3b8;line-height:1.65"><strong style="color:#fff">Respuesta:</strong> Oracle EBS genera automáticamente los libros de IVA (ventas y compras), aplica las alícuotas correctas (16%, 8%, 0%) según el tipo de producto farmacéutico, calcula la retención del 75% como agente de retención, maneja el IGTF en operaciones con divisas y produce el archivo XML listo para declarar ante el portal del SENIAT. Cuando Venezuela ejecutó la reconversión monetaria, Farmatodo actualizó todos sus sistemas en pocas horas — eso es cumplimiento normativo en tiempo real.</div>
-      </div>
-      <div style="background:rgba(0,0,0,0.3);border:1px solid rgba(217,43,43,0.2);border-radius:10px;padding:14px 18px">
-        <div style="font-size:11px;font-weight:700;color:var(--red);font-family:'Rajdhani';letter-spacing:1px;margin-bottom:6px">❓ ¿Qué diferencia a Oracle de cualquier otro ERP que un estudiante podría analizar?</div>
-        <div style="font-size:12px;color:#94a3b8;line-height:1.65"><strong style="color:#fff">Respuesta:</strong> Tres diferencias clave: primero, Oracle opera con evidencia de primera mano — Kelis Ochoa usa Xstore POS diariamente en Farmatodo. Segundo, Oracle demuestra en la práctica cómo un SIT, un SIG y un ERP coexisten en una sola plataforma, lo que conecta directamente con los contenidos del Módulo II de la materia. Tercero, Oracle resuelve el problema más específico del contexto venezolano: mantener operaciones continuas ante apagones, inflación y cambios normativos frecuentes.</div>
-      </div>
+    <div class="qa-block">
+      <div class="qa-question">❓ ¿Por qué Oracle y no un sistema más accesible como Profit Plus o Mónica?</div>
+      <div class="qa-answer"><strong>Respuesta:</strong> Oracle no es la solución para toda empresa — es la solución correcta para Farmatodo. Con +300 tiendas, condición de contribuyente especial y operación en dos países, Farmatodo necesita un sistema que escale, que opere offline durante los apagones venezolanos y que procese miles de transacciones simultáneas sin perder la trazabilidad fiscal. Profit Plus y Mónica son excelentes para PYMEs, pero no están diseñados para ese nivel de complejidad operativa.</div>
+    </div>
+    <div class="qa-block">
+      <div class="qa-question">❓ ¿Cómo garantiza Oracle el cumplimiento con el SENIAT en el contexto venezolano?</div>
+      <div class="qa-answer"><strong>Respuesta:</strong> Oracle EBS genera automáticamente los libros de IVA (ventas y compras), aplica las alícuotas correctas (16%, 8%, 0%) según el tipo de producto farmacéutico, calcula la retención del 75% como agente de retención, maneja el IGTF en operaciones con divisas y produce el archivo XML listo para declarar ante el portal del SENIAT. Cuando Venezuela ejecutó la reconversión monetaria, Farmatodo actualizó todos sus sistemas en pocas horas — eso es cumplimiento normativo en tiempo real.</div>
+    </div>
+    <div class="qa-block">
+      <div class="qa-question">❓ ¿Qué diferencia a Oracle de cualquier otro ERP que un estudiante podría analizar?</div>
+      <div class="qa-answer"><strong>Respuesta:</strong> Tres diferencias clave: primero, Oracle opera con evidencia de primera mano — Kelis Ochoa usa Xstore POS diariamente en Farmatodo. Segundo, Oracle demuestra en la práctica cómo un SIT, un SIG y un ERP coexisten en una sola plataforma, lo que conecta directamente con los contenidos del Módulo II de la materia. Tercero, Oracle resuelve el problema más específico del contexto venezolano: mantener operaciones continuas ante apagones, inflación y cambios normativos frecuentes.</div>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════
-     COMENTARIOS PÚBLICOS
-══════════════════════════════ -->
+<!-- COMENTARIOS PÚBLICOS -->
 <div class="thread-card" style="margin-top:20px">
   <div class="thread-body">
     <div class="section-title">Comentarios y Debate</div>
     <p style="font-size:12px;color:var(--muted);margin-bottom:16px">¿Tienes una pregunta, aporte o comparación con otro sistema? Déjalo aquí.</p>
     <div id="public-comments"></div>
-    <div class="reply-composer">
-      <div class="composer-label">TU NOMBRE</div>
-      <input type="text" id="pub-name" placeholder="Ej: María González" style="width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--text);font-size:12px;margin-bottom:8px">
-      <div class="composer-label">TU COMENTARIO</div>
+
+    <div class="composer-box" id="public-composer">
+      <div class="composer-label">NUEVO COMENTARIO</div>
+      <input type="text" class="composer-name" id="pub-name" placeholder="Tu nombre completo" maxlength="50">
       <textarea class="composer-input" id="pub-text" placeholder="Escribe tu comentario, pregunta técnica o aporte al debate..."></textarea>
-      <div style="margin-top:8px">
-        <div class="composer-label">📎 ADJUNTAR ARCHIVO O IMAGEN (opcional)</div>
-        <input type="file" id="pub-file" accept="image/*,.pdf" style="margin:6px 0;font-size:11px;color:var(--muted)">
+
+      <div class="file-upload-area" id="pub-dropzone" onclick="document.getElementById('pub-file').click()">
+        <i class="fas fa-cloud-upload-alt"></i>
+        <p>Arrastra archivos aquí o haz clic<br><span style="font-size:10px;opacity:0.7">Máximo 10MB · Imágenes y PDFs</span></p>
+        <input type="file" id="pub-file" multiple accept="image/*,.pdf" style="display:none" onchange="handleFiles(this, 'pub')">
       </div>
-      <div style="margin-top:8px">
-        <div class="composer-label">🔗 PEGAR LINK (opcional)</div>
-        <input type="url" id="pub-link" placeholder="https://..." style="width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--text);font-size:11px;margin-top:4px">
-      </div>
-      <div class="composer-actions" style="margin-top:10px">
-        <button class="btn-submit" onclick="publishPublic()"><i class="fas fa-paper-plane" style="margin-right:6px"></i>PUBLICAR COMENTARIO</button>
+      <div class="file-preview" id="pub-preview"></div>
+
+      <input type="url" id="pub-link" placeholder="🔗 Link externo (opcional)" style="width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--text);font-size:11px;margin-top:8px;">
+
+      <div class="composer-actions">
+        <span style="font-size:10px;color:var(--muted);font-family:'Rajdhani';">Comentario público · Visible para todos</span>
+        <button class="btn-submit" id="pub-submit" onclick="publishPost('public')">
+          <i class="fas fa-paper-plane" style="margin-right:6px"></i>PUBLICAR COMENTARIO
+        </button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════
-     6. CHECKLIST EXPOSICIÓN
-══════════════════════════════ -->
+<!-- CHECKLIST -->
 <div class="thread-card" style="margin-top:20px">
   <div class="thread-body">
     <div class="section-title">Checklist de Preparación — Exposición Oracle</div>
     <table class="checklist-table">
-      <thead>
-        <tr><th>MÓDULO</th><th>ACTIVIDAD</th><th>RESPONSABLE</th><th>LISTO</th></tr>
-      </thead>
+      <thead><tr><th>MÓDULO</th><th>ACTIVIDAD</th><th>RESPONSABLE</th><th>LISTO</th></tr></thead>
       <tbody>
         <tr><td>GL</td><td>Analizar Posting journals del período</td><td>Edgardo Moya</td><td><input type="checkbox" class="chk"></td></tr>
         <tr><td>AP</td><td>Investigar Retenciones IVA SENIAT</td><td>Maryori Azuaje</td><td><input type="checkbox" class="chk"></td></tr>
@@ -872,9 +571,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   </div>
 </div>
 
-<!-- ══════════════════════════════
-     7. ESPACIO EVIDENCIAS
-══════════════════════════════ -->
+<!-- EVIDENCIAS -->
 <div class="thread-card" style="margin-top:20px">
   <div class="thread-body">
     <div class="section-title">Evidencias por Integrante</div>
@@ -882,10 +579,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <div class="evidence-card">
       <div class="evidence-name">Edgardo Moya</div>
       <div class="evidence-role">COORDINADOR · ANÁLISIS GENERAL</div>
-      <label class="evidence-upload"><i class="fas fa-paperclip"></i> Adjuntar archivo o imagen<input type="file" accept="image/*,.pdf,.xlsx,.docx" style="display:none"></label>
-      <div style="margin-top:6px">
-        <input type="url" placeholder="🔗 Pegar link (Google Drive, Canva, YouTube...)" style="width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:7px 12px;color:var(--text);font-size:11px">
-      </div>
+      <label class="evidence-upload" onclick="document.getElementById('ev1-file').click()">
+        <i class="fas fa-paperclip"></i> Adjuntar archivo o imagen
+        <input type="file" id="ev1-file" accept="image/*,.pdf,.xlsx,.docx" style="display:none" onchange="handleEvidence(this, 'ev1')">
+      </label>
+      <div class="file-preview" id="ev1-preview"></div>
+      <input type="url" placeholder="🔗 Pegar link (Google Drive, Canva, YouTube...)" style="width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:7px 12px;color:var(--text);font-size:11px;margin-bottom:8px;">
       <textarea class="evidence-comment" placeholder="Comentario técnico sobre la evidencia...">Presentación completa del sistema Oracle en Farmatodo — análisis de módulos, proceso contable automatizado, matriz de evaluación y recomendación final.</textarea>
       <div class="evidence-deadline">📅 Fecha límite: antes de la exposición</div>
     </div>
@@ -893,10 +592,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <div class="evidence-card">
       <div class="evidence-name">Maryori Azuaje</div>
       <div class="evidence-role">CUMPLIMIENTO NORMATIVO</div>
-      <label class="evidence-upload"><i class="fas fa-paperclip"></i> Adjuntar archivo o imagen<input type="file" accept="image/*,.pdf,.xlsx,.docx" style="display:none"></label>
-      <div style="margin-top:6px">
-        <input type="url" placeholder="🔗 Pegar link (Google Drive, Canva, YouTube...)" style="width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:7px 12px;color:var(--text);font-size:11px">
-      </div>
+      <label class="evidence-upload" onclick="document.getElementById('ev2-file').click()">
+        <i class="fas fa-paperclip"></i> Adjuntar archivo o imagen
+        <input type="file" id="ev2-file" accept="image/*,.pdf,.xlsx,.docx" style="display:none" onchange="handleEvidence(this, 'ev2')">
+      </label>
+      <div class="file-preview" id="ev2-preview"></div>
+      <input type="url" placeholder="🔗 Pegar link" style="width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:7px 12px;color:var(--text);font-size:11px;margin-bottom:8px;">
       <textarea class="evidence-comment" placeholder="Maryori: adjunta evidencia sobre cumplimiento SENIAT, libros de IVA, retenciones..."></textarea>
       <div class="evidence-deadline">📅 Fecha límite: antes de la exposición</div>
     </div>
@@ -904,10 +605,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <div class="evidence-card">
       <div class="evidence-name">Kelis Ochoa</div>
       <div class="evidence-role">EXPOSITORA · USUARIA REAL FARMATODO</div>
-      <label class="evidence-upload"><i class="fas fa-paperclip"></i> Adjuntar archivo o imagen<input type="file" accept="image/*,.pdf,.xlsx,.docx" style="display:none"></label>
-      <div style="margin-top:6px">
-        <input type="url" placeholder="🔗 Pegar link (Google Drive, Canva, YouTube...)" style="width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:7px 12px;color:var(--text);font-size:11px">
-      </div>
+      <label class="evidence-upload" onclick="document.getElementById('ev3-file').click()">
+        <i class="fas fa-paperclip"></i> Adjuntar archivo o imagen
+        <input type="file" id="ev3-file" accept="image/*,.pdf,.xlsx,.docx" style="display:none" onchange="handleEvidence(this, 'ev3')">
+      </label>
+      <div class="file-preview" id="ev3-preview"></div>
+      <input type="url" placeholder="🔗 Pegar link" style="width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:7px 12px;color:var(--text);font-size:11px;margin-bottom:8px;">
       <textarea class="evidence-comment" placeholder="Kelis: adjunta capturas o descripciones de lo que manejas en Oracle en Farmatodo..."></textarea>
       <div class="evidence-deadline">📅 Fecha límite: antes de la exposición</div>
     </div>
@@ -915,10 +618,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <div class="evidence-card">
       <div class="evidence-name">Nayroby Figueroa</div>
       <div class="evidence-role">INVESTIGADORA Y ANALISTA</div>
-      <label class="evidence-upload"><i class="fas fa-paperclip"></i> Adjuntar archivo o imagen<input type="file" accept="image/*,.pdf,.xlsx,.docx" style="display:none"></label>
-      <div style="margin-top:6px">
-        <input type="url" placeholder="🔗 Pegar link (Google Drive, Canva, YouTube...)" style="width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:7px 12px;color:var(--text);font-size:11px">
-      </div>
+      <label class="evidence-upload" onclick="document.getElementById('ev4-file').click()">
+        <i class="fas fa-paperclip"></i> Adjuntar archivo o imagen
+        <input type="file" id="ev4-file" accept="image/*,.pdf,.xlsx,.docx" style="display:none" onchange="handleEvidence(this, 'ev4')">
+      </label>
+      <div class="file-preview" id="ev4-preview"></div>
+      <input type="url" placeholder="🔗 Pegar link" style="width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:7px 12px;color:var(--text);font-size:11px;margin-bottom:8px;">
       <textarea class="evidence-comment" placeholder="Nayroby: adjunta evidencia de investigación — fuentes, estadísticas, casos de uso..."></textarea>
       <div class="evidence-deadline">📅 Fecha límite: antes de la exposición</div>
     </div>
@@ -926,48 +631,46 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <div class="evidence-card">
       <div class="evidence-name">Yolimar Marcano</div>
       <div class="evidence-role">ESTRATEGA Y EVALUADORA</div>
-      <label class="evidence-upload"><i class="fas fa-paperclip"></i> Adjuntar archivo o imagen<input type="file" accept="image/*,.pdf,.xlsx,.docx" style="display:none"></label>
-      <div style="margin-top:6px">
-        <input type="url" placeholder="🔗 Pegar link (Google Drive, Canva, YouTube...)" style="width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:7px 12px;color:var(--text);font-size:11px">
-      </div>
+      <label class="evidence-upload" onclick="document.getElementById('ev5-file').click()">
+        <i class="fas fa-paperclip"></i> Adjuntar archivo o imagen
+        <input type="file" id="ev5-file" accept="image/*,.pdf,.xlsx,.docx" style="display:none" onchange="handleEvidence(this, 'ev5')">
+      </label>
+      <div class="file-preview" id="ev5-preview"></div>
+      <input type="url" placeholder="🔗 Pegar link" style="width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:7px 12px;color:var(--text);font-size:11px;margin-bottom:8px;">
       <textarea class="evidence-comment" placeholder="Yolimar: adjunta evidencia sobre análisis estratégico, matriz de evaluación, propuestas..."></textarea>
       <div class="evidence-deadline">📅 Fecha límite: antes de la exposición</div>
     </div>
-
   </div>
 </div>
 
 </div><!-- /main-col -->
 
-<!-- ══════════════════════════════
-     SIDEBAR
-══════════════════════════════ -->
+<!-- SIDEBAR -->
 <div class="sidebar">
-
   <div class="sidebar-card">
     <div class="sidebar-title">Equipo Estratégico</div>
     <div class="team-member">
-      <img class="avatar-xs" src="https://i.imgur.com/RtssnS9.jpeg" onerror="this.src='https://ui-avatars.com/api/?name=EM&background=d92b2b&color=fff'" alt="Edgardo">
+      <img class="avatar-xs" src="https://i.imgur.com/RtssnS9.jpeg" onerror="this.src='https://ui-avatars.com/api/?name=Edgardo+Moya&background=d92b2b&color=fff'" alt="Edgardo">
       <div class="tm-info"><div class="tm-name">Edgardo Moya</div><div class="tm-role">Coordinador</div></div>
       <div class="tm-status"><div class="dot-online"></div></div>
     </div>
     <div class="team-member">
-      <img class="avatar-xs" src="https://i.imgur.com/DtlPOdM.jpeg" onerror="this.src='https://ui-avatars.com/api/?name=MA&background=cc5500&color=fff'" alt="Maryori">
+      <img class="avatar-xs" src="https://i.imgur.com/DtlPOdM.jpeg" onerror="this.src='https://ui-avatars.com/api/?name=Maryori+Azuaje&background=cc5500&color=fff'" alt="Maryori">
       <div class="tm-info"><div class="tm-name">Maryori Azuaje</div><div class="tm-role">Cumplimiento</div></div>
       <div class="tm-status"><div class="dot-pending"></div></div>
     </div>
     <div class="team-member">
-      <img class="avatar-xs" src="https://i.imgur.com/jeckcVL.jpeg" onerror="this.src='https://ui-avatars.com/api/?name=KO&background=cc5500&color=fff'" alt="Kelis">
+      <img class="avatar-xs" src="https://i.imgur.com/jeckcVL.jpeg" onerror="this.src='https://ui-avatars.com/api/?name=Kelis+Ochoa&background=cc5500&color=fff'" alt="Kelis">
       <div class="tm-info"><div class="tm-name">Kelis Ochoa</div><div class="tm-role">Expositora</div></div>
       <div class="tm-status"><div class="dot-pending"></div></div>
     </div>
     <div class="team-member">
-      <img class="avatar-xs" src="https://i.imgur.com/3YVY98r.jpeg" onerror="this.src='https://ui-avatars.com/api/?name=NF&background=cc5500&color=fff'" alt="Nayroby">
+      <img class="avatar-xs" src="https://i.imgur.com/3YVY98r.jpeg" onerror="this.src='https://ui-avatars.com/api/?name=Nayroby+Figueroa&background=cc5500&color=fff'" alt="Nayroby">
       <div class="tm-info"><div class="tm-name">Nayroby Figueroa</div><div class="tm-role">Investigadora</div></div>
       <div class="tm-status"><div class="dot-pending"></div></div>
     </div>
     <div class="team-member">
-      <img class="avatar-xs" src="https://i.imgur.com/ptagDNz.jpeg" onerror="this.src='https://ui-avatars.com/api/?name=YM&background=cc5500&color=fff'" alt="Yolimar">
+      <img class="avatar-xs" src="https://i.imgur.com/ptagDNz.jpeg" onerror="this.src='https://ui-avatars.com/api/?name=Yolimar+Marcano&background=cc5500&color=fff'" alt="Yolimar">
       <div class="tm-info"><div class="tm-name">Yolimar Marcano</div><div class="tm-role">Estratega</div></div>
       <div class="tm-status"><div class="dot-pending"></div></div>
     </div>
@@ -978,8 +681,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <div class="stat-row"><span class="stat-label">Módulos analizados</span><span class="stat-val">6/6</span></div>
     <div class="stat-row"><span class="stat-label">Asientos documentados</span><span class="stat-val">6</span></div>
     <div class="stat-row"><span class="stat-label">Tiendas Farmatodo</span><span class="stat-val">300+</span></div>
-    <div class="stat-row"><span class="stat-label">Aportes publicados</span><span class="stat-val">1/5</span></div>
-    <div class="stat-row"><span class="stat-label">Evidencias adjuntas</span><span class="stat-val">0/5</span></div>
+    <div class="stat-row"><span class="stat-label">Aportes publicados</span><span class="stat-val" id="stat-posts">0</span></div>
+    <div class="stat-row"><span class="stat-label">Comentarios</span><span class="stat-val" id="stat-comments">0</span></div>
+    <div class="stat-row"><span class="stat-label">Evidencias adjuntas</span><span class="stat-val" id="stat-evidence">0</span></div>
   </div>
 
   <div class="sidebar-card">
@@ -1000,13 +704,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     </a>
     <p style="font-size:10px;color:var(--muted);text-align:center;margin-top:8px;font-family:'Rajdhani';letter-spacing:1px">*(Agregar link aquí)*</p>
   </div>
-
 </div><!-- /sidebar -->
 </div><!-- /main-wrap -->
 
-<!-- ══════════════════════════════
-     8. FOOTER
-══════════════════════════════ -->
+<!-- FOOTER -->
 <div id="footer">
   <div class="footer-inner">
     <div class="section-title" style="margin-bottom:24px">Timeline Ejecutiva</div>
@@ -1036,246 +737,659 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   </div>
 </div>
 
-<!-- Firebase SDK -->
+<!-- FIREBASE SDK -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getDatabase, ref, set, onValue, push } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { getFirestore, collection, doc, setDoc, getDoc, getDocs, deleteDoc, updateDoc, onSnapshot, query, orderBy, serverTimestamp, Timestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getStorage, ref as storageRef, uploadBytes, getDownloadURL, deleteObject } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAAirV6ilc4Fn_B7QEpn8nbjhVEB0wj1QQ",
   authDomain: "oracle-foro-luz.firebaseapp.com",
   projectId: "oracle-foro-luz",
-  storageBucket: "oracle-foro-luz.firebasestorage.app",
+  storageBucket: "oracle-foro-luz.appspot.com",
   messagingSenderId: "770746089928",
-  appId: "1:770746089928:web:cd4fd2bebbc179f8f100fd",
-  databaseURL: "https://oracle-foro-luz-default-rtdb.firebaseio.com"
+  appId: "1:770746089928:web:cd4fd2bebbc179f8f100fd"
 };
 
 const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const storage = getStorage(app);
 
-// ── NOMBRES DE INTEGRANTES ──
-const MEMBERS = ['maryori','kelis','nayroby','yolimar'];
-const MEMBER_NAMES = {
-  maryori:'Maryori Azuaje',
-  kelis:'Kelis Ochoa',
-  nayroby:'Nayroby Figueroa',
-  yolimar:'Yolimar Marcano'
-};
-const MEMBER_IMGS = {
-  maryori:'https://i.imgur.com/DtlPOdM.jpeg',
-  kelis:'https://i.imgur.com/jeckcVL.jpeg',
-  nayroby:'https://i.imgur.com/3YVY98r.jpeg',
-  yolimar:'https://i.imgur.com/ptagDNz.jpeg'
+// ── ESTADO GLOBAL ──
+let currentUser = null;
+let userName = localStorage.getItem('oracle_foro_username') || '';
+let readMode = false;
+let editingPostId = null;
+let editingType = null;
+const fileBuffers = { team: [], pub: [] };
+
+// ── MIEMBROS DEL EQUIPO ──
+const TEAM_MEMBERS = {
+  'Edgardo Moya': { role: 'COORDINADOR', tagClass: 'tag', img: 'https://i.imgur.com/RtssnS9.jpeg', initials: 'EM', bg: 'd92b2b' },
+  'Maryori Azuaje': { role: 'CUMPLIMIENTO', tagClass: 'tag-gold', img: 'https://i.imgur.com/DtlPOdM.jpeg', initials: 'MA', bg: 'cc5500' },
+  'Kelis Ochoa': { role: 'EXPOSITORA', tagClass: 'tag-teal', img: 'https://i.imgur.com/jeckcVL.jpeg', initials: 'KO', bg: 'cc5500' },
+  'Nayroby Figueroa': { role: 'INVESTIGADORA', tagClass: 'tag-gold', img: 'https://i.imgur.com/3YVY98r.jpeg', initials: 'NF', bg: 'cc5500' },
+  'Yolimar Marcano': { role: 'ESTRATEGA', tagClass: 'tag', img: 'https://i.imgur.com/ptagDNz.jpeg', initials: 'YM', bg: 'cc5500' }
 };
 
-// ── CARGAR APORTES AL INICIAR ──
-MEMBERS.forEach(name=>{
-  onValue(ref(db,`aportes/${name}`), snap=>{
-    if(snap.exists()){
-      const data=snap.val();
-      renderAporte(name, data);
+// ── AUTENTICACIÓN ──
+async function initAuth() {
+  try {
+    await signInAnonymously(auth);
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        currentUser = user;
+        if (!userName) {
+          document.getElementById('auth-modal').style.display = 'flex';
+        } else {
+          document.getElementById('team-author').value = userName;
+          document.getElementById('pub-name').value = userName;
+        }
+      }
+    });
+  } catch (e) {
+    console.error('Auth error:', e);
+    showToast('Error de conexión con Firebase. Algunas funciones pueden no estar disponibles.', 'error');
+  }
+}
+
+window.saveUserName = function() {
+  const name = document.getElementById('auth-name').value.trim();
+  if (!name || name.length < 3) {
+    showToast('Ingresa un nombre válido (mínimo 3 caracteres)', 'error');
+    return;
+  }
+  userName = name;
+  localStorage.setItem('oracle_foro_username', name);
+  document.getElementById('team-author').value = name;
+  document.getElementById('pub-name').value = name;
+  closeAuthModal();
+  showToast(`Bienvenido, ${name}`, 'success');
+};
+
+window.closeAuthModal = function() {
+  document.getElementById('auth-modal').style.display = 'none';
+};
+
+// ── TOASTS ──
+function showToast(message, type = 'info') {
+  const container = document.getElementById('toast-container');
+  const toast = document.createElement('div');
+  toast.className = `toast ${type}`;
+  const icon = type === 'success' ? '✅' : type === 'error' ? '❌' : 'ℹ️';
+  toast.innerHTML = `<span>${icon}</span><span style="font-size:12px">${escapeHtml(message)}</span>`;
+  container.appendChild(toast);
+  setTimeout(() => {
+    toast.classList.add('toast-out');
+    setTimeout(() => toast.remove(), 300);
+  }, 4000);
+}
+
+// ── ESCAPE HTML ──
+function escapeHtml(text) {
+  if (!text) return '';
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+// ── LINKIFY ──
+function linkify(text) {
+  if (!text) return '';
+  const urlRegex = /(https?:\/\/[^\s<]+[^<.,:;"')\]\s])/g;
+  return text.replace(urlRegex, '<a href="$1" target="_blank" rel="noopener">$1</a>');
+}
+
+// ── FORMAT DATE ──
+function formatDate(ts) {
+  if (!ts) return '';
+  const date = ts.toDate ? ts.toDate() : new Date(ts);
+  return date.toLocaleDateString('es-VE', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+}
+
+// ── FILE HANDLING ──
+window.handleFiles = function(input, type) {
+  const files = Array.from(input.files);
+  const maxSize = 10 * 1024 * 1024; // 10MB
+  const preview = document.getElementById(`${type}-preview`);
+
+  files.forEach(file => {
+    if (file.size > maxSize) {
+      showToast(`"${file.name}" excede 10MB máximo`, 'error');
+      return;
     }
+
+    fileBuffers[type].push(file);
+
+    const item = document.createElement('div');
+    item.className = 'file-preview-item';
+    item.dataset.filename = file.name;
+
+    if (file.type.startsWith('image/')) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        item.innerHTML = `<img src="${e.target.result}" alt=""><span>${escapeHtml(file.name)}</span><span class="remove-file" onclick="removeFile('${type}', '${file.name}')">✕</span>`;
+      };
+      reader.readAsDataURL(file);
+    } else {
+      const icon = file.name.endsWith('.pdf') ? '📄' : file.name.match(/\.(xlsx?|csv)$/) ? '📊' : file.name.match(/\.(docx?|pptx?)$/) ? '📝' : '📎';
+      item.innerHTML = `<span style="font-size:16px">${icon}</span><span>${escapeHtml(file.name)}</span><span class="remove-file" onclick="removeFile('${type}', '${file.name}')">✕</span>`;
+    }
+    preview.appendChild(item);
+  });
+
+  input.value = '';
+};
+
+window.removeFile = function(type, filename) {
+  const idx = fileBuffers[type].findIndex(f => f.name === filename);
+  if (idx > -1) fileBuffers[type].splice(idx, 1);
+  const preview = document.getElementById(`${type}-preview`);
+  const item = preview.querySelector(`[data-filename="${filename}"]`);
+  if (item) item.remove();
+};
+
+window.handleEvidence = function(input, evId) {
+  const file = input.files[0];
+  if (!file) return;
+  const maxSize = 10 * 1024 * 1024;
+  if (file.size > maxSize) {
+    showToast('Archivo excede 10MB máximo', 'error');
+    return;
+  }
+
+  const preview = document.getElementById(`${evId}-preview`);
+  preview.innerHTML = '';
+
+  const item = document.createElement('div');
+  item.className = 'file-preview-item';
+
+  if (file.type.startsWith('image/')) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      item.innerHTML = `<img src="${e.target.result}" alt=""><span>${escapeHtml(file.name)}</span><span class="remove-file" onclick="this.parentElement.remove()">✕</span>`;
+    };
+    reader.readAsDataURL(file);
+  } else {
+    const icon = file.name.endsWith('.pdf') ? '📄' : '📎';
+    item.innerHTML = `<span style="font-size:16px">${icon}</span><span>${escapeHtml(file.name)}</span><span class="remove-file" onclick="this.parentElement.remove()">✕</span>`;
+  }
+  preview.appendChild(item);
+  showToast('Archivo listo para subir. Guarda la evidencia para confirmar.', 'success');
+  updateStats();
+};
+
+// ── DRAG & DROP ──
+['team-dropzone', 'pub-dropzone'].forEach(id => {
+  const zone = document.getElementById(id);
+  if (!zone) return;
+  const type = id.replace('-dropzone', '');
+
+  zone.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    zone.classList.add('dragover');
+  });
+  zone.addEventListener('dragleave', () => zone.classList.remove('dragover'));
+  zone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    zone.classList.remove('dragover');
+    const input = document.getElementById(`${type}-file`);
+    input.files = e.dataTransfer.files;
+    handleFiles(input, type);
   });
 });
 
-// ── CARGAR COMENTARIOS PÚBLICOS ──
-onValue(ref(db,'comentarios'), snap=>{
-  const container=document.getElementById('public-comments');
-  container.innerHTML='';
-  if(snap.exists()){
-    const comentarios=snap.val();
-    const lista=Object.values(comentarios).sort((a,b)=>b.timestamp-a.timestamp);
-    lista.forEach(c=>renderComentario(c));
+// ── PUBLICAR POST ──
+window.publishPost = async function(type) {
+  const isTeam = type === 'team';
+  const authorInput = document.getElementById(isTeam ? 'team-author' : 'pub-name');
+  const textInput = document.getElementById(isTeam ? 'team-text' : 'pub-text');
+  const linkInput = document.getElementById(isTeam ? 'team-link' : 'pub-link');
+  const submitBtn = document.getElementById(isTeam ? 'team-submit' : 'pub-submit');
+
+  const author = authorInput.value.trim();
+  const text = textInput.value.trim();
+  const link = linkInput.value.trim();
+
+  if (!author || author.length < 3) {
+    showToast('Ingresa tu nombre completo', 'error');
+    authorInput.focus();
+    return;
   }
-  updateStats();
-});
+  if (!text || text.length < 10) {
+    showToast('El contenido debe tener al menos 10 caracteres', 'error');
+    textInput.focus();
+    return;
+  }
 
-// ── RENDERIZAR APORTE DE INTEGRANTE ──
-function renderAporte(name, data){
-  const box=document.getElementById('reply-'+name)?.querySelector('.construction-box');
-  const composer=document.getElementById('composer-'+name);
-  if(!box) return;
-  const now=new Date(data.timestamp).toLocaleDateString('es-VE',{day:'2-digit',month:'long',year:'numeric'});
-  let extra='';
-  if(data.link) extra+=`<div style="margin-top:8px;font-size:11px"><i class="fas fa-link" style="margin-right:4px;color:var(--gold)"></i><a href="${data.link}" target="_blank" style="color:var(--gold);word-break:break-all">${data.link}</a></div>`;
-  box.innerHTML=`
-    <div style="font-size:13px;color:#e2e8f0;line-height:1.75">${data.text.replace(/\n/g,'<br>')}</div>
-    ${extra}
-    <div style="font-size:10px;color:var(--muted);margin-top:8px;font-family:'Rajdhani';letter-spacing:1px">✅ Publicado el ${now}</div>`;
-  if(composer) composer.style.display='none';
-  updateStats();
-}
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = '<span class="spinner"></span> Publicando...';
 
-// ── RENDERIZAR COMENTARIO PÚBLICO ──
-function renderComentario(data){
-  const container=document.getElementById('public-comments');
-  const initials=data.name.split(' ').map(w=>w[0]).join('').substring(0,2).toUpperCase();
-  const now=new Date(data.timestamp).toLocaleDateString('es-VE',{day:'2-digit',month:'long',year:'numeric'});
-  let extra='';
-  if(data.link) extra+=`<div style="margin-top:6px;font-size:11px"><i class="fas fa-link" style="margin-right:4px;color:var(--gold)"></i><a href="${data.link}" target="_blank" style="color:var(--gold);word-break:break-all">${data.link}</a></div>`;
-  const div=document.createElement('div');
-  div.className='reply';div.style.marginBottom='12px';
-  div.innerHTML=`
+  try {
+    const postId = editingPostId || `post_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    const collectionName = isTeam ? 'team_posts' : 'public_comments';
+    const postRef = doc(db, collectionName, postId);
+
+    // Subir archivos
+    const files = [];
+    const fileList = fileBuffers[isTeam ? 'team' : 'pub'] || [];
+
+    for (const file of fileList) {
+      const fileRef = storageRef(storage, `${collectionName}/${postId}/${file.name}`);
+      await uploadBytes(fileRef, file);
+      const url = await getDownloadURL(fileRef);
+      files.push({ name: file.name, url, type: file.type, size: file.size });
+    }
+
+    const data = {
+      author,
+      text,
+      link: link || '',
+      files,
+      timestamp: serverTimestamp(),
+      uid: currentUser?.uid || 'anonymous',
+      edited: !!editingPostId,
+      editedAt: editingPostId ? serverTimestamp() : null
+    };
+
+    await setDoc(postRef, data);
+
+    // Limpiar
+    clearComposer(isTeam ? 'team' : 'pub');
+    editingPostId = null;
+    editingType = null;
+    showToast(editingPostId ? 'Post actualizado correctamente' : 'Publicado correctamente', 'success');
+
+  } catch (e) {
+    console.error('Publish error:', e);
+    showToast('Error al publicar. Intenta de nuevo.', 'error');
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = isTeam 
+      ? '<i class="fas fa-paper-plane" style="margin-right:6px"></i>PUBLICAR APORTE'
+      : '<i class="fas fa-paper-plane" style="margin-right:6px"></i>PUBLICAR COMENTARIO';
+  }
+};
+
+// ── LIMPIAR COMPOSER ──
+window.clearComposer = function(type) {
+  document.getElementById(`${type}-text`).value = '';
+  document.getElementById(`${type}-link`).value = '';
+  document.getElementById(`${type}-preview`).innerHTML = '';
+  fileBuffers[type] = [];
+  editingPostId = null;
+  editingType = null;
+};
+
+// ── RENDER POST ──
+function renderPost(postId, data, type) {
+  const isTeam = type === 'team';
+  const container = document.getElementById(isTeam ? 'team-posts-container' : 'public-comments');
+
+  let existing = document.getElementById(`post-${postId}`);
+  if (existing) existing.remove();
+
+  const member = TEAM_MEMBERS[data.author];
+  const isAuthor = data.author === userName;
+
+  const div = document.createElement('div');
+  div.className = 'reply';
+  div.id = `post-${postId}`;
+
+  let avatarHtml;
+  if (member) {
+    avatarHtml = `<img class="avatar-sm" src="${member.img}" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(member.initials)}&background=${member.bg}&color=fff'" alt="${escapeHtml(data.author)}">`;
+  } else {
+    const initials = data.author.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
+    avatarHtml = `<div style="width:38px;height:38px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:'Orbitron',monospace;font-size:12px;font-weight:700;color:#fff;flex-shrink:0">${initials}</div>`;
+  }
+
+  let tagHtml = '';
+  if (member) {
+    tagHtml = `<span class="tag ${member.tagClass}" style="margin-left:6px;font-size:9px">${member.role}</span>`;
+  }
+
+  let filesHtml = '';
+  if (data.files && data.files.length > 0) {
+    filesHtml = '<div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:8px;">';
+    data.files.forEach(f => {
+      if (f.type && f.type.startsWith('image/')) {
+        filesHtml += `<a href="${f.url}" target="_blank"><img src="${f.url}" style="max-width:200px;max-height:150px;border-radius:8px;border:1px solid var(--border);object-fit:cover;cursor:pointer;transition:transform 0.2s" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'"></a>`;
+      } else {
+        const icon = f.name.endsWith('.pdf') ? '📄' : f.name.match(/\.(xlsx?|csv)$/) ? '📊' : f.name.match(/\.(docx?|pptx?)$/) ? '📝' : '📎';
+        filesHtml += `<a href="${f.url}" target="_blank" style="display:flex;align-items:center;gap:6px;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:8px 12px;font-size:11px;color:var(--text);text-decoration:none;transition:0.2s" onmouseover="this.style.borderColor='var(--red)'" onmouseout="this.style.borderColor='var(--border)'"><span style="font-size:16px">${icon}</span><span>${escapeHtml(f.name)}</span></a>`;
+      }
+    });
+    filesHtml += '</div>';
+  }
+
+  let linkHtml = '';
+  if (data.link) {
+    linkHtml = `<div style="margin-top:8px;font-size:11px"><i class="fas fa-link" style="margin-right:4px;color:var(--gold)"></i><a href="${escapeHtml(data.link)}" target="_blank" rel="noopener" style="color:var(--gold);word-break:break-all">${escapeHtml(data.link)}</a></div>`;
+  }
+
+  let editedHtml = data.edited ? `<span style="font-size:10px;color:var(--muted);margin-left:8px">(editado)</span>` : '';
+
+  let actionsHtml = '';
+  if (isAuthor && !readMode) {
+    actionsHtml = `
+      <div class="reply-actions">
+        <button class="btn-edit" onclick="editPost('${postId}', '${type}')"><i class="fas fa-edit" style="margin-right:4px"></i>Editar</button>
+        <button class="btn-delete" onclick="deletePost('${postId}', '${type}')"><i class="fas fa-trash" style="margin-right:4px"></i>Eliminar</button>
+      </div>`;
+  }
+
+  div.innerHTML = `
     <div class="reply-header">
-      <div style="width:38px;height:38px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:'Orbitron',monospace;font-size:12px;font-weight:700;color:#fff;flex-shrink:0">${initials}</div>
+      ${avatarHtml}
       <div class="reply-meta">
-        <div class="reply-name">${data.name}</div>
-        <div class="reply-date">${now}</div>
+        <div class="reply-name">${escapeHtml(data.author)}${tagHtml}${editedHtml}</div>
+        <div class="reply-date">${formatDate(data.timestamp)}</div>
       </div>
     </div>
-    <div class="reply-text" style="margin-top:8px">${data.text.replace(/\n/g,'<br>')}${extra}</div>`;
+    <div class="reply-text">${linkify(escapeHtml(data.text)).replace(/\n/g, '<br>')}</div>
+    ${linkHtml}
+    ${filesHtml}
+    ${actionsHtml}
+    <div class="nested-replies" id="replies-${postId}"></div>
+    <div class="composer-box" id="reply-composer-${postId}" style="display:none">
+      <div class="composer-label">RESPONDER A ${escapeHtml(data.author)}</div>
+      <textarea class="composer-input" id="reply-text-${postId}" placeholder="Escribe tu respuesta..."></textarea>
+      <div class="composer-actions">
+        <button class="btn-cancel" onclick="toggleReplyComposer('${postId}')">Cancelar</button>
+        <button class="btn-submit" onclick="publishReply('${postId}', '${type}')">Responder</button>
+      </div>
+    </div>
+  `;
+
+  container.insertBefore(div, container.firstChild);
+}
+
+// ── EDITAR POST ──
+window.editPost = function(postId, type) {
+  const isTeam = type === 'team';
+  const collectionName = isTeam ? 'team_posts' : 'public_comments';
+
+  getDoc(doc(db, collectionName, postId)).then(snap => {
+    if (!snap.exists()) return;
+    const data = snap.data();
+
+    if (data.author !== userName) {
+      showToast('Solo el autor puede editar este post', 'error');
+      return;
+    }
+
+    editingPostId = postId;
+    editingType = type;
+
+    document.getElementById(isTeam ? 'team-text' : 'pub-text').value = data.text;
+    document.getElementById(isTeam ? 'team-link' : 'pub-link').value = data.link || '';
+
+    // Scroll al composer
+    document.getElementById(isTeam ? 'team-composer' : 'public-composer').scrollIntoView({ behavior: 'smooth' });
+    showToast('Editando post. Modifica el contenido y publica para guardar cambios.', 'info');
+  });
+};
+
+// ── ELIMINAR POST ──
+window.deletePost = async function(postId, type) {
+  if (!confirm('¿Estás seguro de eliminar este post? Esta acción no se puede deshacer.')) return;
+
+  const isTeam = type === 'team';
+  const collectionName = isTeam ? 'team_posts' : 'public_comments';
+
+  try {
+    // Eliminar archivos adjuntos
+    const snap = await getDoc(doc(db, collectionName, postId));
+    if (snap.exists()) {
+      const data = snap.data();
+      if (data.files) {
+        for (const f of data.files) {
+          try {
+            const fileRef = storageRef(storage, `${collectionName}/${postId}/${f.name}`);
+            await deleteObject(fileRef);
+          } catch (e) { /* ignore */ }
+        }
+      }
+    }
+
+    await deleteDoc(doc(db, collectionName, postId));
+    const el = document.getElementById(`post-${postId}`);
+    if (el) el.remove();
+    showToast('Post eliminado correctamente', 'success');
+    updateStats();
+  } catch (e) {
+    console.error('Delete error:', e);
+    showToast('Error al eliminar', 'error');
+  }
+};
+
+// ── RESPONDER A POST ──
+window.toggleReplyComposer = function(postId) {
+  const composer = document.getElementById(`reply-composer-${postId}`);
+  composer.style.display = composer.style.display === 'none' ? 'block' : 'none';
+};
+
+window.publishReply = async function(parentId, parentType) {
+  const text = document.getElementById(`reply-text-${parentId}`).value.trim();
+  if (!text || text.length < 5) {
+    showToast('Escribe una respuesta válida', 'error');
+    return;
+  }
+  if (!userName) {
+    showToast('Identifícate primero', 'error');
+    return;
+  }
+
+  const replyId = `reply_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+  const collectionName = parentType === 'team' ? 'team_posts' : 'public_comments';
+
+  try {
+    await setDoc(doc(db, `${collectionName}/${parentId}/replies`, replyId), {
+      author: userName,
+      text,
+      timestamp: serverTimestamp(),
+      uid: currentUser?.uid || 'anonymous'
+    });
+
+    document.getElementById(`reply-text-${parentId}`).value = '';
+    toggleReplyComposer(parentId);
+    showToast('Respuesta publicada', 'success');
+  } catch (e) {
+    showToast('Error al publicar respuesta', 'error');
+  }
+};
+
+// ── RENDER REPLY ──
+function renderReply(parentId, replyId, data, parentType) {
+  const container = document.getElementById(`replies-${parentId}`);
+  if (!container) return;
+
+  let existing = document.getElementById(`reply-${replyId}`);
+  if (existing) existing.remove();
+
+  const member = TEAM_MEMBERS[data.author];
+  const isAuthor = data.author === userName;
+
+  const div = document.createElement('div');
+  div.className = 'reply-l2';
+  div.id = `reply-${replyId}`;
+
+  let avatarHtml;
+  if (member) {
+    avatarHtml = `<img class="avatar-xs" src="${member.img}" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(member.initials)}&background=${member.bg}&color=fff&size=30'" alt="${escapeHtml(data.author)}">`;
+  } else {
+    const initials = data.author.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
+    avatarHtml = `<div style="width:30px;height:30px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;flex-shrink:0">${initials}</div>`;
+  }
+
+  let actionsHtml = '';
+  if (isAuthor && !readMode) {
+    actionsHtml = `
+      <div class="reply-actions" style="margin-top:8px">
+        <button class="btn-delete" onclick="deleteReply('${parentId}', '${replyId}', '${parentType}')" style="padding:2px 10px;font-size:10px"><i class="fas fa-trash" style="margin-right:4px"></i>Eliminar</button>
+      </div>`;
+  }
+
+  div.innerHTML = `
+    <div class="reply-header">
+      ${avatarHtml}
+      <div class="reply-meta">
+        <div class="reply-name" style="font-size:12px">${escapeHtml(data.author)}</div>
+        <div class="reply-date">${formatDate(data.timestamp)}</div>
+      </div>
+    </div>
+    <div class="reply-text" style="font-size:11px">${linkify(escapeHtml(data.text)).replace(/\n/g, '<br>')}</div>
+    ${actionsHtml}
+  `;
+
   container.appendChild(div);
 }
 
-// ── PUBLICAR APORTE INTEGRANTE ──
-window.publishReply=function(name){
-  const text=document.getElementById('text-'+name)?.value.trim();
-  const link=document.getElementById('link-'+name)?.value.trim()||'';
-  if(!text){alert('Por favor escribe tu reflexión antes de publicar.');return;}
-  const btn=document.querySelector(`#composer-${name} .btn-submit`);
-  if(btn){btn.textContent='Guardando...';btn.disabled=true;}
-  set(ref(db,`aportes/${name}`),{
-    text, link, timestamp: Date.now(),
-    name: MEMBER_NAMES[name]||name
-  }).then(()=>{
-    if(btn){
-      btn.textContent='✅ Publicado';
-      btn.style.background='var(--green)';
-      btn.disabled=false;
-      setTimeout(()=>{
-        btn.textContent='PUBLICAR';
-        btn.style.background='';
-      },2000);
-    }
-  }).catch(e=>{
-    alert('Error al guardar. Intenta de nuevo.');
-    if(btn){btn.textContent='PUBLICAR';btn.disabled=false;}
-  });
-}
-
-// ── PUBLICAR COMENTARIO PÚBLICO ──
-window.publishPublic=function(){
-  const name=document.getElementById('pub-name')?.value.trim();
-  const text=document.getElementById('pub-text')?.value.trim();
-  const link=document.getElementById('pub-link')?.value.trim()||'';
-  if(!name||!text){alert('Por favor ingresa tu nombre y comentario.');return;}
-  const btn=document.querySelector('.composer-actions .btn-submit');
-  if(btn){btn.textContent='Guardando...';btn.disabled=true;}
-  push(ref(db,'comentarios'),{
-    name, text, link, timestamp: Date.now()
-  }).then(()=>{
-    document.getElementById('pub-name').value='';
-    document.getElementById('pub-text').value='';
-    document.getElementById('pub-link').value='';
-    if(btn){btn.textContent='✅ Publicado';btn.disabled=false;}
-  }).catch(()=>{
-    alert('Error al guardar. Intenta de nuevo.');
-    if(btn){btn.textContent='PUBLICAR COMENTARIO';btn.disabled=false;}
-  });
-}
-
-// ── TOGGLE COMPOSER ──
-window.toggleComposer=function(name){
-  const c=document.getElementById('composer-'+name);
-  if(!c)return;
-  c.style.display=c.style.display==='block'?'none':'block';
-}
-
-// ── TOGGLE MODO LECTURA ──
-let readMode=false;
-window.toggleMode=function(){
-  readMode=!readMode;
-  const btn=document.getElementById('toggle-btn');
-  const editables=document.querySelectorAll('.construction-box,.reply-composer,.obs-input,.evidence-card');
-  if(readMode){
-    btn.textContent='✏️ MODO EDICIÓN';
-    btn.style.background='rgba(34,197,94,0.15)';
-    btn.style.borderColor='rgba(34,197,94,0.4)';
-    btn.style.color='var(--green)';
-    editables.forEach(e=>{e.style.opacity='0.3';e.style.pointerEvents='none';});
-    document.querySelectorAll('.reply-actions').forEach(a=>a.style.display='none');
-  } else {
-    btn.textContent='👁 MODO LECTURA';
-    btn.style.background='rgba(217,43,43,0.15)';
-    btn.style.borderColor='rgba(217,43,43,0.4)';
-    btn.style.color='var(--red)';
-    editables.forEach(e=>{e.style.opacity='';e.style.pointerEvents='';});
-    document.querySelectorAll('.reply-actions').forEach(a=>a.style.display='');
+// ── ELIMINAR REPLY ──
+window.deleteReply = async function(parentId, replyId, parentType) {
+  if (!confirm('¿Eliminar esta respuesta?')) return;
+  const collectionName = parentType === 'team' ? 'team_posts' : 'public_comments';
+  try {
+    await deleteDoc(doc(db, `${collectionName}/${parentId}/replies`, replyId));
+    const el = document.getElementById(`reply-${replyId}`);
+    if (el) el.remove();
+    showToast('Respuesta eliminada', 'success');
+  } catch (e) {
+    showToast('Error al eliminar', 'error');
   }
+};
+
+// ── LISTENERS EN TIEMPO REAL ──
+function setupListeners() {
+  // Team posts
+  onSnapshot(query(collection(db, 'team_posts'), orderBy('timestamp', 'desc')), (snap) => {
+    snap.docChanges().forEach(change => {
+      const postId = change.doc.id;
+      const data = change.doc.data();
+      if (change.type === 'removed') {
+        const el = document.getElementById(`post-${postId}`);
+        if (el) el.remove();
+      } else {
+        renderPost(postId, data, 'team');
+        // Setup replies listener
+        onSnapshot(query(collection(db, `team_posts/${postId}/replies`), orderBy('timestamp', 'asc')), (replySnap) => {
+          replySnap.docChanges().forEach(rc => {
+            if (rc.type === 'removed') {
+              const el = document.getElementById(`reply-${rc.doc.id}`);
+              if (el) el.remove();
+            } else {
+              renderReply(postId, rc.doc.id, rc.doc.data(), 'team');
+            }
+          });
+        });
+      }
+    });
+    updateStats();
+  });
+
+  // Public comments
+  onSnapshot(query(collection(db, 'public_comments'), orderBy('timestamp', 'desc')), (snap) => {
+    snap.docChanges().forEach(change => {
+      const postId = change.doc.id;
+      const data = change.doc.data();
+      if (change.type === 'removed') {
+        const el = document.getElementById(`post-${postId}`);
+        if (el) el.remove();
+      } else {
+        renderPost(postId, data, 'public');
+        onSnapshot(query(collection(db, `public_comments/${postId}/replies`), orderBy('timestamp', 'asc')), (replySnap) => {
+          replySnap.docChanges().forEach(rc => {
+            if (rc.type === 'removed') {
+              const el = document.getElementById(`reply-${rc.doc.id}`);
+              if (el) el.remove();
+            } else {
+              renderReply(postId, rc.doc.id, rc.doc.data(), 'public');
+            }
+          });
+        });
+      }
+    });
+    updateStats();
+  });
 }
 
 // ── ESTADÍSTICAS ──
-function updateStats(){
-  let count=0;
-  MEMBERS.forEach(n=>{
-    const box=document.getElementById('reply-'+n)?.querySelector('.construction-box');
-    if(box&&box.querySelector('[style*="Publicado"]')) count++;
-  });
-  document.querySelectorAll('.stat-val').forEach((v,i)=>{
-    if(i===3) v.textContent=(count+1)+'/5';
-  });
-}
-  // Múltiples respuestas anidadas
-window.addNestedReply = function(parentId, author, text) {
-    const parentDiv = document.getElementById(parentId);
-    const repliesContainer = parentDiv.querySelector('.nested-replies');
-    if (!repliesContainer) return;
-    
-    const replyDiv = document.createElement('div');
-    replyDiv.className = 'reply-l2';
-    const date = new Date().toLocaleDateString('es-VE');
-    const initials = author.split(' ').map(w=>w[0]).join('').substring(0,2).toUpperCase();
-    
-    replyDiv.innerHTML = `
-        <div class="reply-header">
-            <div style="width:32px;height:32px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff">${initials}</div>
-            <div class="reply-meta">
-                <div class="reply-name">${escapeHtml(author)}</div>
-                <div class="reply-date">${date}</div>
-            </div>
-        </div>
-        <div class="reply-text">${escapeHtml(text).replace(/\n/g,'<br>')}</div>
-        <div class="reply-actions">
-            <button class="btn-reply" onclick="showReplyForm('${replyDiv.id}')">Responder</button>
-            <button class="btn-like" onclick="this.innerHTML='<i class=\'fas fa-thumbs-up\'></i> Útil'">Útil</button>
-        </div>
-        <div id="form-${replyDiv.id}" style="display:none" class="reply-composer">
-            <input type="text" id="author-${replyDiv.id}" placeholder="Tu nombre" style="width:100%;margin-bottom:8px;padding:8px;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;color:var(--text)">
-            <textarea id="text-${replyDiv.id}" class="composer-input" placeholder="Escribe tu respuesta..."></textarea>
-            <div class="composer-actions"><button class="btn-submit" onclick="submitNestedReply('${replyDiv.id}', '${parentId}')">Publicar</button></div>
-        </div>
-        <div class="nested-replies" style="margin-left:1rem;margin-top:12px"></div>
-    `;
-    replyDiv.id = 'reply-' + Date.now();
-    repliesContainer.appendChild(replyDiv);
-}
+async function updateStats() {
+  try {
+    const teamSnap = await getDocs(collection(db, 'team_posts'));
+    const pubSnap = await getDocs(collection(db, 'public_comments'));
 
-window.showReplyForm = function(replyDivId) {
-    const form = document.getElementById('form-' + replyDivId);
-    if (form) form.style.display = form.style.display === 'block' ? 'none' : 'block';
-}
+    document.getElementById('stat-posts').textContent = teamSnap.size;
+    document.getElementById('stat-comments').textContent = pubSnap.size;
 
-window.submitNestedReply = function(replyDivId, parentId) {
-    const author = document.getElementById('author-' + replyDivId)?.value.trim();
-    const text = document.getElementById('text-' + replyDivId)?.value.trim();
-    if (!author || !text) { alert('Completa nombre y respuesta'); return; }
-    addNestedReply(parentId, author, text);
-    document.getElementById('author-' + replyDivId).value = '';
-    document.getElementById('text-' + replyDivId).value = '';
-    document.getElementById('form-' + replyDivId).style.display = 'none';
-}
-
-window.escapeHtml = function(str) {
-    if(!str) return '';
-    return str.replace(/[&<>]/g, function(m) {
-        if(m === '&') return '&amp;';
-        if(m === '<') return '&lt;';
-        if(m === '>') return '&gt;';
-        return m;
+    let evidenceCount = 0;
+    teamSnap.forEach(d => {
+      if (d.data().files && d.data().files.length > 0) evidenceCount += d.data().files.length;
     });
+    pubSnap.forEach(d => {
+      if (d.data().files && d.data().files.length > 0) evidenceCount += d.data().files.length;
+    });
+    document.getElementById('stat-evidence').textContent = evidenceCount;
+  } catch (e) { /* ignore */ }
 }
+
+// ── TEMA CLARO/OSCURO ──
+window.toggleTheme = function() {
+  document.body.classList.toggle('light-mode');
+  const isLight = document.body.classList.contains('light-mode');
+  localStorage.setItem('oracle_foro_theme', isLight ? 'light' : 'dark');
+  showToast(isLight ? 'Tema claro activado' : 'Tema oscuro activado', 'info');
+};
+
+// ── MODO LECTURA ──
+window.toggleReadMode = function() {
+  readMode = !readMode;
+  const btn = document.getElementById('read-mode-btn');
+  const composers = document.querySelectorAll('.composer-box');
+  const editables = document.querySelectorAll('.evidence-upload, .evidence-comment, .chk');
+
+  if (readMode) {
+    btn.innerHTML = '<i class="fas fa-eye-slash"></i> EDICIÓN';
+    btn.style.background = 'rgba(34,197,94,0.15)';
+    btn.style.borderColor = 'rgba(34,197,94,0.4)';
+    btn.style.color = 'var(--green)';
+    composers.forEach(c => c.style.display = 'none');
+    editables.forEach(e => { e.style.pointerEvents = 'none'; e.style.opacity = '0.5'; });
+    document.querySelectorAll('.btn-edit, .btn-delete').forEach(b => b.style.display = 'none');
+    showToast('Modo lectura activado. Los compositores están ocultos.', 'info');
+  } else {
+    btn.innerHTML = '<i class="fas fa-eye"></i> LECTURA';
+    btn.style.background = 'rgba(217,43,43,0.15)';
+    btn.style.borderColor = 'rgba(217,43,43,0.4)';
+    btn.style.color = 'var(--red)';
+    composers.forEach(c => c.style.display = '');
+    editables.forEach(e => { e.style.pointerEvents = ''; e.style.opacity = ''; });
+    document.querySelectorAll('.btn-edit, .btn-delete').forEach(b => b.style.display = '');
+    showToast('Modo edición activado', 'success');
   }
+};
+
+// ── INICIALIZAR ──
+document.addEventListener('DOMContentLoaded', () => {
+  // Restaurar tema
+  if (localStorage.getItem('oracle_foro_theme') === 'light') {
+    document.body.classList.add('light-mode');
+  }
+
+  // Prellenar nombre si existe
+  if (userName) {
+    document.getElementById('team-author').value = userName;
+    document.getElementById('pub-name').value = userName;
+  }
+
+  initAuth();
+  setupListeners();
+  updateStats();
+});
 </script>
 </body>
 </html>
