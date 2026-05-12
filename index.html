@@ -659,6 +659,18 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
       </div>
     </div>
     <div class="reply" id="reply-maryori">
+  <div class="reply-header">...</div>
+  <div class="construction-box">
+    ...instrucciones...
+    <div id="composer-maryori" style="display:none">
+      ...textarea, file, link, botón publicar...
+    </div>
+  </div>
+  <div class="reply-actions">
+    <button class="btn-reply" onclick="toggleComposer('maryori')">Responder</button>
+  </div>
+  <div class="nested-replies" style="margin-left:1rem;margin-top:12px"></div>
+</div>
     <div class="reply-actions">
       <button class="btn-reply" onclick="toggleComposer('maryori')"><i class="fas fa-reply"></i> Responder</button>
     </div>
@@ -700,7 +712,19 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
         </div>
       </div>
     </div>
-    <div class="reply" id="reply-kelis">
+    <div class="reply" id="reply-maryori">
+  <div class="reply-header">...</div>
+  <div class="construction-box">
+    ...instrucciones...
+    <div id="composer-maryori" style="display:none">
+      ...textarea, file, link, botón publicar...
+    </div>
+  </div>
+  <div class="reply-actions">
+    <button class="btn-reply" onclick="toggleComposer('maryori')">Responder</button>
+  </div>
+  <div class="nested-replies" style="margin-left:1rem;margin-top:12px"></div>
+</div>
     <div class="reply-actions">
       <button class="btn-reply" onclick="toggleComposer('kelis')"><i class="fas fa-reply"></i> Responder</button>
     </div>
@@ -742,7 +766,19 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
         </div>
       </div>
     </div>
-    <div class="reply" id="reply-nayroby">
+    <div class="reply" id="reply-maryori">
+  <div class="reply-header">...</div>
+  <div class="construction-box">
+    ...instrucciones...
+    <div id="composer-maryori" style="display:none">
+      ...textarea, file, link, botón publicar...
+    </div>
+  </div>
+  <div class="reply-actions">
+    <button class="btn-reply" onclick="toggleComposer('maryori')">Responder</button>
+  </div>
+  <div class="nested-replies" style="margin-left:1rem;margin-top:12px"></div>
+</div>
     <div class="reply-actions">
       <button class="btn-reply" onclick="toggleComposer('nayroby')"><i class="fas fa-reply"></i> Responder</button>
     </div>
@@ -784,7 +820,19 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
         </div>
       </div>
     </div>
-    <div class="reply" id="reply-">
+    <div class="reply" id="reply-maryori">
+  <div class="reply-header">...</div>
+  <div class="construction-box">
+    ...instrucciones...
+    <div id="composer-maryori" style="display:none">
+      ...textarea, file, link, botón publicar...
+    </div>
+  </div>
+  <div class="reply-actions">
+    <button class="btn-reply" onclick="toggleComposer('maryori')">Responder</button>
+  </div>
+  <div class="nested-replies" style="margin-left:1rem;margin-top:12px"></div>
+</div>
     <div class="reply-actions">
       <button class="btn-reply" onclick="toggleComposer('yolimar')"><i class="fas fa-reply"></i> Responder</button>
     </div>
@@ -1207,7 +1255,7 @@ function updateStats(){
   });
 }
   // Múltiples respuestas anidadas
-function addNestedReply(parentId, author, text) {
+window.addNestedReply = function(parentId, author, text) {
     const parentDiv = document.getElementById(parentId);
     const repliesContainer = parentDiv.querySelector('.nested-replies');
     if (!repliesContainer) return;
@@ -1241,12 +1289,12 @@ function addNestedReply(parentId, author, text) {
     repliesContainer.appendChild(replyDiv);
 }
 
-function showReplyForm(replyDivId) {
+window.showReplyForm = function(replyDivId) {
     const form = document.getElementById('form-' + replyDivId);
     if (form) form.style.display = form.style.display === 'block' ? 'none' : 'block';
 }
 
-function submitNestedReply(replyDivId, parentId) {
+window.submitNestedReply = function(replyDivId, parentId) {
     const author = document.getElementById('author-' + replyDivId)?.value.trim();
     const text = document.getElementById('text-' + replyDivId)?.value.trim();
     if (!author || !text) { alert('Completa nombre y respuesta'); return; }
@@ -1256,7 +1304,7 @@ function submitNestedReply(replyDivId, parentId) {
     document.getElementById('form-' + replyDivId).style.display = 'none';
 }
 
-function escapeHtml(str) {
+window.escapeHtml = function(str) {
     if(!str) return '';
     return str.replace(/[&<>]/g, function(m) {
         if(m === '&') return '&amp;';
